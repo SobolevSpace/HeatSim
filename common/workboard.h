@@ -11,6 +11,7 @@ public:
 	point(double T);
 	point(double T, int propertyID);
 	double getTemperature();
+	int getProperty();
 	void setTemperature(double T);
 	void setProperty(int PID);
 	~point();
@@ -23,6 +24,8 @@ private:
 
 public:
 	workboard();
+	workboard& operator= (const workboard& s);
+	std::vector<std::vector<point> > getPointMat();
 	void __show();//FOR TEST ONLY
 	~workboard();
 };
