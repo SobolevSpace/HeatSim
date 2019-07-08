@@ -1,5 +1,6 @@
 #include "HeatDataModel.h"
 
+#include <vector>
 
 HeatDataModel::HeatDataModel() : initcondi(std::make_shared<workboard>()), padTemperature(20), alpha(0.2), time20(0)
 {
@@ -10,7 +11,7 @@ HeatDataModel::HeatDataModel() : initcondi(std::make_shared<workboard>()), padTe
 
 void HeatDataModel::setInitCondi(const workboard condi)
 {
-	*initcondi = *condi;
+	*initcondi = condi;
 	calculateMidcondi();
 	Fire_OnPropertyChanged("heat_Result");
 }
@@ -64,21 +65,26 @@ std::shared_ptr<workboard> HeatDataModel::getResult()
 void HeatDataModel::calculateMidcondi()
 {
 	int i, j, k, size, newsize;
-	size = midcondi[0]->getSize();
-	newsize = initcondi->getSize();
+	std::vector<std::vector<point> > mat, newmat;
+	mat = midcondi[0]->getPointMat();
+	newmat = initcondi->getPointMat();
+	size = mat.size();
+	newsize = newmat.size();
 	*(midcondi[0]) = *initcondi;
 	for (i = 1; i < 401; ++i)
 	{
-		if (size != newsize) midcondi[i].resize(newsize);
+		mat = midcondi[i - 1]->getPointMat();
 		for (j = 0; j < newsize; ++j)
 			for (k = 0; k < newsize; ++k) {
 				double lef, rig, up, bot, ori;
-				lef = j == 0 ? padTemperature : midcondi[i - 1]->t_matrix[j - 1][k];
-				rig = j == newsize - 1 ? padTemperature : midcondi[i - 1]->t_matrix[j + 1][k];
-				up = k == 0 ? padTemperature : midcondi[i - 1]->t_matrix[j][k - 1];
-				bot = k == newsize - 1 ? padTemperature : midcondi[i - 1]->t_matrix[j][k + 1];
-				ori = midcondi[i - 1]->t_matrix[j][k];
-				midcondi[i]->t_matrix[j][k] = alpha * (lef + rig + up + bot) + (1 - alpha)*ori;
+				lef = j == 0 ? padTemperature : mat[j - 1][k].getTemperature();
+				rig = j == newsize - 1 ? padTemperature : mat[j + 1][k].getTemperature();
+				up = k == 0 ? padTemperature : mat[j][k - 1].getTemperature();
+				bot = k == newsize - 1 ? padTemperature : mat[j][k + 1].getTemperature();
+				ori = mat[j][k].getTemperature();
+				newmat[j][k].setTemperature(alpha * (lef + rig + up + bot) + (1 - alpha)*ori);
 			}
+		//todo: wait workboard.
+		//midcondi[i] = newmat;
 	}
 }
