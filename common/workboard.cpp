@@ -74,3 +74,21 @@ void workboard::getPointMat(std::vector<std::vector<point> >& ret) {
 		}
 	}
 }
+
+int workboard::getSize() {
+	return size;
+}
+
+workboard& workboard::operator= (const std::vector<std::vector<point> >& mat) {
+	if (mat.size() != size) {
+		std::cout << "Size not fit" << std::endl;
+	}
+	else {
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				t_matrix[i][j] = mat[i][j];
+			}
+		}
+	}
+	return *this;
+}
