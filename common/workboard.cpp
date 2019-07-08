@@ -63,6 +63,14 @@ workboard& workboard::operator= (const workboard& s) {
 	return *this;
 }
 
-std::vector<std::vector<point> > workboard::getPointMat() {
-	return t_matrix;
+void workboard::getPointMat(std::vector<std::vector<point> >& ret) {
+	ret.resize(size);
+	for (int i = 0; i < size; i++) {
+		ret[i].resize(size);
+	}
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			ret[i][j] = t_matrix[i][j];
+		}
+	}
 }

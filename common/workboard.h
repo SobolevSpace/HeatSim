@@ -25,7 +25,7 @@ private:
 public:
 	workboard();
 	workboard& operator= (const workboard& s);
-	std::vector<std::vector<point> > getPointMat();
+	void getPointMat(std::vector<std::vector<point> >& ret);
 	void __show();//FOR TEST ONLY
 	~workboard();
 };
