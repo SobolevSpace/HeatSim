@@ -17,6 +17,10 @@ double point::getTemperature() {
 	return temperature;
 }
 
+int point::getProperty() {
+	return propertyID;
+}
+
 void point::setTemperature(double T) {
 	temperature = T;
 }
@@ -47,4 +51,18 @@ void workboard::__show() {
 		}
 		std::cout << std::endl;
 	}
+}
+
+workboard& workboard::operator= (const workboard& s) {
+	//DONOT CHECK whether size is fitable or not
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			t_matrix[i][j] = s.t_matrix[i][j];
+		}
+	}
+	return *this;
+}
+
+std::vector<std::vector<point> > workboard::getPointMat() {
+	return t_matrix;
 }
