@@ -1,6 +1,7 @@
 #include "workboard.h"
 #include <iostream>
 
+
 point::point():temperature(0),propertyID(0) {
 	;
 }
@@ -33,7 +34,7 @@ point::~point() {
 	;
 }
 
-workboard::workboard():size(100),t_matrix() {
+workboard::workboard():size(MAT_SIZE),t_matrix() {
 	t_matrix.resize(size);
 	for (int i = 0; i < size; i++) {
 		t_matrix[i].resize(size);

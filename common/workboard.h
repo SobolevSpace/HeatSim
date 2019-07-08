@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 
+#define MAT_SIZE 100
+
 class point {
 private:
 	double temperature;
