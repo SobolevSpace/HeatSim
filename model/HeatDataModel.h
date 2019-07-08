@@ -20,6 +20,8 @@ public:
 	std::shared_ptr<workboard> getResult();
 
 private:
+	void calculateMidcondi();
+
 	std::shared_ptr<workboard> initcondi;
 	double padTemperature;
 	double alpha;
