@@ -1,4 +1,6 @@
-#pragma once
+#ifndef WORKBOARD_H
+#define WORKBOARD_H
+
 #include <vector>
 
 #define MAT_SIZE 100
@@ -33,3 +35,24 @@ public:
 	void __show();//FOR TEST ONLY
 	~workboard();
 };
+
+enum CType {NOCHANGE = 0, ALPHA = 1, TIME=2};
+
+class workboardPass {
+private:
+	workboard wb;
+	CType changeType;
+	double changeValue;
+
+public:
+	workboardPass();
+	workboardPass(const workboard& w);
+	CType getChangeType();
+	void setChangeType(CType c);
+	double getChangeValue();
+	void setChangeValue(double val);
+	workboard getWorkBoard();
+	void setWorkBoard(const workboard& w);
+	~workboardPass();
+};
+#endif // !WORKBOARD_H
