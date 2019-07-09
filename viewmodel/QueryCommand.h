@@ -17,5 +17,5 @@ public:
 private:
 	HeatViewModel* m_pVM;
 
-	workboard m_param;
+	newpara m_param;
 };
