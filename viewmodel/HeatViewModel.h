@@ -2,9 +2,10 @@
 #include "../others/ETL/include/etlbase.h"
 #include "../model/HeatDataModel.h"
 #include "HeatViewModelSink.h"
+#include "QueryCommand.h"
 
-class HeatViewModel:public Proxy_PropertyNotification
-	:public Proxy_CommandNotification
+class HeatViewModel : public Proxy_PropertyNotification<HeatViewModel>,
+	public Proxy_CommandNotification<HeatViewModel>
 {
 public:
 	HeatViewModel();
@@ -28,4 +29,5 @@ private:
 	std::shared_ptr<QueryCommand> m_cmdQuery;
 
 	std::shared_ptr<HeatViewModelSink> m_sink;
-}
+
+};

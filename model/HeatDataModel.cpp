@@ -84,10 +84,10 @@ bool HeatDataModel::Query(workboardPass para)
 	case NOCHANGE:
 		return true;
 	case ALPHA:
-		this->setAlpha(para.getChangeValue());
+		setAlpha(para.getChangeValue());
 		return true;
 	case TIME:
-		this->setTime20((int)para.getChangeValue());
+		setTime20((int)para.getChangeValue());
 		return true;
 	}
 }

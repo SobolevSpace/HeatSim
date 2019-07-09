@@ -1,7 +1,7 @@
 #include"HeatViewModel.h"
 
-HeatViewModel::HeatViewModel() : m_workboard(std::make_shared<workboard>())
-	m_cmdQuery(std::make_shared<QueryCommand>(this))
+HeatViewModel::HeatViewModel() : m_workboard(std::make_shared<workboard>()),
+	m_cmdQuery(std::make_shared<QueryCommand>(this)),
 	m_sink(std::make_shared<HeatViewModelSink>(this))
 {
 
@@ -30,7 +30,7 @@ HeatDataModel& HeatViewModel::GetModel() throw()
 
 void HeatViewModel::SetWorkboard(std::shared_ptr<workboard> board)
 {
-
+	m_workboard = board;
 }
 
 bool HeatViewModel::Query(workboardPass para)

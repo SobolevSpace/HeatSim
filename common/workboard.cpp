@@ -95,11 +95,11 @@ workboard& workboard::operator= (const std::vector<std::vector<point> >& mat) {
 }
 
 
-workboardPass::workboardPass():wb(),changeType(0) {
+workboardPass::workboardPass():wb(),changeType(NOCHANGE) {
 	;
 }
 
-workboardPass::workboardPass(const workboard& w):wb(w),changeType(0) {
+workboardPass::workboardPass(const workboard& w):wb(w),changeType(NOCHANGE) {
 	;
 }
 
