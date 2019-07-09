@@ -1,14 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include <QTimer>
 #include <QMainWindow>
 #include "heatview.h"
 #include "ui_MainWindow.h"
 #include "MainWindowPropertySink.h"
 #include "MainWindowCommandSink.h"
-namespace Ui {
-	class MainWindow;
-}
+
 
 class MainWindow : public QMainWindow
 {
@@ -19,10 +17,19 @@ public:
 	~MainWindow();
 	void init();
 	void Set_Buttons();
-	HeatView *view;
 	void set_QueryCommand(const std::shared_ptr<ICommandBase>& cmd) throw();
 	std::shared_ptr<IPropertyNotification> get_PropertySink() throw();
 	std::shared_ptr<ICommandNotification> get_CommandSink() throw();
+
+	HeatView *view;
+
+private:
+	QTimer *m_timer;
+	int count;
+	void InitTimer();
+///////////////////////
+	workboard initial_condition;
+//////////////////////
 
 private:
 	std::shared_ptr<ICommandBase> m_cmdQuery;
@@ -30,6 +37,8 @@ private:
 	std::shared_ptr<MainWindowCommandSink> m_sinkCommand;
 public Q_SLOTS:
 	void Generate_HeatView();
+	void TimerTimeOut();
+
 private:
 	Ui_MainWindowClass *ui;
 
