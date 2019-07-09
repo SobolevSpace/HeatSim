@@ -6,10 +6,10 @@
 
 class HeatViewModel;
 
-class QueryCommand : public ICommandBase
+class InitCondiCommand : public ICommandBase
 {
 public:
-	QueryCommand(HeatViewModel *p) throw();
+	InitCondiCommand(HeatViewModel *p) throw();
 
 	virtual void SetParameter(const std::any& param);
 	virtual void Exec();

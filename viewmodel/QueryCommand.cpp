@@ -2,18 +2,18 @@
 
 #include "HeatViewModel.h"
 
-QueryCommand::QueryCommand(HeatViewModel* p) throw() : m_pVM(p);
+InitCondiCommand::InitCondiCommand(HeatViewModel* p) throw() : m_pVM(p)
 {
 
 }
 
-void QueryCommand::SetParameter(const std::any& param)
+void InitCondiCommand::SetParameter(const std::any& param)
 {
 	m_param = std::any_cast<workboard>(param);
 }
 
-void QueryCommand::Exec()
+void InitCondiCommand::Exec()
 {
 	bool bresult = m_pVM->Query(m_param);
-	m_pVM->Fire_OnCommandComplete("query", bresult);
+	m_pVM->Fire_OnCommandComplete("InitCondi", bresult);
 }
