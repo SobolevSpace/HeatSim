@@ -7,5 +7,12 @@ class HeatViewModel:public Proxy_PropertyNotification
 {
 public:
 	
+
+
+
+	void SetWorkboard(std::shared_ptr<workboard> board);
+
+
 private:
+	std::shared_ptr<workboard> m_workboard;
 }
