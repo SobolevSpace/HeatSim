@@ -33,4 +33,7 @@ void HeatViewModel::SetWorkboard(std::shared_ptr<workboard> board)
 
 }
 
-bool Query();
+bool HeatViewModel::Query(workboardPass para)
+{
+	return m_HeatModel->Query(para);
+}

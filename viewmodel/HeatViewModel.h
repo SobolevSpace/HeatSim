@@ -18,7 +18,7 @@ public:
 	HeatDataModel& GetModel() throw();
 
 	void SetWorkboard(std::shared_ptr<workboard> board);
-	bool Query();
+	bool Query(workboardPass para);
 
 private:
 	std::shared_ptr<HeatDataModel> m_HeatModel;

@@ -21,6 +21,8 @@ public:
 	void setTime20(const std::shared_ptr<timeParameters>);
 	int getTime20() const;
 	
+	bool Query(workboardPass para);
+
 	std::shared_ptr<workboard> getResult();
 
 private:

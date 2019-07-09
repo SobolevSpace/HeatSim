@@ -78,6 +78,20 @@ int HeatDataModel::getTime20() const
 	return time20->get();
 }
 
+bool HeatDataModel::Query(workboardPass para)
+{
+	switch (para.getChangeType()) {
+	case NOCHANGE:
+		return true;
+	case ALPHA:
+		this->setAlpha(para.getChangeValue());
+		return true;
+	case TIME:
+		this->setTime20((int)para.getChangeValue());
+		return true;
+	}
+}
+
 std::shared_ptr<workboard> HeatDataModel::getResult()
 {
 	return result;
