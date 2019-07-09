@@ -2,6 +2,7 @@
 #include "../others/ETL/include/etlbase.h"
 
 #include "../common/workboard.h"
+#include "../common/parameter.h"
 
 class HeatDataModel : public Proxy_PropertyNotification<HeatDataModel>
 {
@@ -28,6 +29,6 @@ private:
 
 	std::shared_ptr<workboard> midcondi[401];
 
-	int time20;
+	std::shared_ptr<timeParameters> time20;
 	std::shared_ptr<workboard> result;
 };

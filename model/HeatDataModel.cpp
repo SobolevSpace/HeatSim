@@ -2,7 +2,7 @@
 
 #include <vector>
 
-HeatDataModel::HeatDataModel() : initcondi(std::make_shared<workboard>()), padTemperature(20), alpha(0.2), time20(0)
+HeatDataModel::HeatDataModel() : initcondi(std::make_shared<workboard>()), padTemperature(20), alpha(0.2), time20(std::make_shared<timeParameters>())
 {
 	for (int i = 0; i <= 401; ++i) midcondi[i] = std::make_shared<workboard>();
 	result = midcondi[0];
@@ -47,14 +47,14 @@ double HeatDataModel::getAlpha() const
 
 void HeatDataModel::setTime20(const int time)
 {
-	time20 = time;
-	result = midcondi[time20];
+	time20->setPara(time);
+	result = midcondi[time];
 	Fire_OnPropertyChanged("heat_Result");
 }
 
 int HeatDataModel::getTime20() const
 {
-	return time20;
+	return time20->get();
 }
 
 std::shared_ptr<workboard> HeatDataModel::getResult()
@@ -66,14 +66,13 @@ void HeatDataModel::calculateMidcondi()
 {
 	int i, j, k, size, newsize;
 	std::vector<std::vector<point> > mat, newmat;
-	mat = midcondi[0]->getPointMat();
-	newmat = initcondi->getPointMat();
-	size = mat.size();
+	midcondi[0]->getPointMat(mat);
+	initcondi->getPointMat(newmat);
 	newsize = newmat.size();
 	*(midcondi[0]) = *initcondi;
 	for (i = 1; i < 401; ++i)
 	{
-		mat = midcondi[i - 1]->getPointMat();
+		midcondi[i - 1]->getPointMat(mat);
 		for (j = 0; j < newsize; ++j)
 			for (k = 0; k < newsize; ++k) {
 				double lef, rig, up, bot, ori;
@@ -84,7 +83,6 @@ void HeatDataModel::calculateMidcondi()
 				ori = mat[j][k].getTemperature();
 				newmat[j][k].setTemperature(alpha * (lef + rig + up + bot) + (1 - alpha)*ori);
 			}
-		//todo: wait workboard.
-		//midcondi[i] = newmat;
+		*midcondi[i] = newmat;
 	}
 }
