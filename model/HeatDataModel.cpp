@@ -16,6 +16,13 @@ void HeatDataModel::setInitCondi(const workboard condi)
 	Fire_OnPropertyChanged("heat_Result");
 }
 
+void HeatDataModel::setInitCondi(const std::shared_ptr<workboard> condi)
+{
+	*initcondi = *condi;
+	calculateMidcondi();
+	Fire_OnPropertyChanged("heat_Result");
+}
+
 std::shared_ptr<workboard> HeatDataModel::getInitCondi()
 {
 	return initcondi;
@@ -49,6 +56,20 @@ void HeatDataModel::setTime20(const int time)
 {
 	time20->setPara(time);
 	result = midcondi[time];
+	Fire_OnPropertyChanged("heat_Result");
+}
+
+void HeatDataModel::setTime20(const timeParameters time)
+{
+	*time20 = time;
+	result = midcondi[time20->get()];
+	Fire_OnPropertyChanged("heat_Result");
+}
+
+void HeatDataModel::setTime20(const std::shared_ptr<timeParameters> time)
+{
+	*time20 = *time;
+	result = midcondi[time20->get()];
 	Fire_OnPropertyChanged("heat_Result");
 }
 
