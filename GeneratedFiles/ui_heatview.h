@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -21,13 +22,19 @@ QT_BEGIN_NAMESPACE
 class Ui_HeatView
 {
 public:
+    QSlider *SliderSelectTime;
 
     void setupUi(QWidget *HeatView)
     {
         if (HeatView->objectName().isEmpty())
             HeatView->setObjectName(QStringLiteral("HeatView"));
-        HeatView->resize(400, 300);
-		//HeatView->setFixedSize(400, 300);
+        HeatView->resize(400, 420);
+        SliderSelectTime = new QSlider(HeatView);
+        SliderSelectTime->setObjectName(QStringLiteral("SliderSelectTime"));
+        SliderSelectTime->setGeometry(QRect(0, 400, 400, 20));
+        SliderSelectTime->setMaximum(400);
+        SliderSelectTime->setOrientation(Qt::Horizontal);
+
         retranslateUi(HeatView);
 
         QMetaObject::connectSlotsByName(HeatView);

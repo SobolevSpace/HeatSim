@@ -22,19 +22,21 @@ void MainWindow::init()
 	m_timer = new QTimer(this);
 	//定时器触发信号槽
 	connect(m_timer, SIGNAL(timeout()), this, SLOT(TimerTimeOut()));
+	connect(view, SIGNAL(SendTime(int)), this, SLOT(RecieveTime(int)));
+}
+void MainWindow::RecieveTime(int val) {
+	Transport(TIME, val*0.05);
 }
 
 void MainWindow::Generate_HeatView()
 {
 	view->show();
-	InitTimer();
-	
+	//InitTimer();
 	//view->resize(100, 100);
 	//m_cmdQuery->SetParameter();
 	//m_cmdQuery->Exec();
 
 	//this->hide();
-	//connect(view,SIGNAL(ExitWin()),this,SLOT(show()));
 }
 
 void MainWindow::Set_Buttons()
@@ -74,12 +76,27 @@ void MainWindow::TimerTimeOut()
 	}
 	count++;
 	ui->labelCount->setText(QString::number(count));
-	//std::any param(std::make_any<workboardPass>());
-	//workboardPass& wbp = std::any_cast<workboardPass&>(param);
-	//wbp.setChangeType(TIME);
-	//wbp.setChangeValue(count*0.05);
-	//wbp.setWorkBoard(initial_condition);
-	//m_cmdQuery->SetParameter(param);
-	//m_cmdQuery->Exec();
+	/*
+	std::any param(std::make_any<workboardPass>());
+	workboardPass& wbp = std::any_cast<workboardPass&>(param);
+	wbp.setChangeType(TIME);
+	wbp.setChangeValue(count*0.05);
+	wbp.setWorkBoard(initial_condition);
+	m_cmdQuery->SetParameter(param);
+	m_cmdQuery->Exec();
+	*/
+	Transport(TIME, count*0.05);
+	//view->update();
+}
+
+void MainWindow::Transport(CType type, double changeval) {
+	/*std::any param(std::make_any<workboardPass>());
+	workboardPass& wbp = std::any_cast<workboardPass&>(param);
+	wbp.setChangeType(type);
+	wbp.setChangeValue(changeval);
+	wbp.setWorkBoard(initial_condition);
+	m_cmdQuery->SetParameter(param);
+	m_cmdQuery->Exec();*/
+	ui->labelCount->setText(QString::number(changeval));
 	view->update();
 }

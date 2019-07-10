@@ -9,25 +9,36 @@ HeatView::HeatView(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("HeatView");
-
+	init();
 }
 
 HeatView::~HeatView()
 {
     delete ui;
 }
+
+void HeatView::init()
+{
+	connect(ui->SliderSelectTime, SIGNAL(valueChanged(int)),this, SLOT(ChangeTime()));
+}
+
+void HeatView::ChangeTime() {
+	//update();
+	emit SendTime(ui->SliderSelectTime->value());
+}
+
 void HeatView::paintEvent(QPaintEvent*)
 {
     QPainter painter(this);
 	//int size = m_Heatdim->getSize();
 	int size = 100;
-	this->resize(size * 4, size * 4);
+	this->resize(size * 4, size * 4+20);
     /////////////////////////////////////////////////
     srand((int)time(0));
     for(int i=0;i<size*size;i++){
         //painter.setPen(Get_Color(i%200));
-        painter.fillRect(QRect((i%size)*(this->frameGeometry().width()/size),(i/size)*(this->frameGeometry().height()/size),
-                       int(this->frameGeometry().width()/size*1) ,int(this->frameGeometry().height()/size*1)),
+        painter.fillRect(QRect((i%size)*(this->frameGeometry().width()/size),(i/size)*((this->frameGeometry().height()-20)/size),
+                       int(this->frameGeometry().width()/size*1) ,int((this->frameGeometry().height()-20)/size*1)),
                          QBrush(Get_Color(double(rand()%10000))));
     }
 
@@ -60,6 +71,7 @@ QColor HeatView::Get_Color(double T)
     if(T<=lower_bound)return QColor(0,0,0);
     return QColor( Tint>>1,Tint%64<<2, Tint%8<<5 );
 }
+
 
 void HeatView::ButtonPressBackToMainWindow()
 {

@@ -20,6 +20,7 @@ public:
 	void set_QueryCommand(const std::shared_ptr<ICommandBase>& cmd) throw();
 	std::shared_ptr<IPropertyNotification> get_PropertySink() throw();
 	std::shared_ptr<ICommandNotification> get_CommandSink() throw();
+	void Transport(CType type, double changeval);
 
 	HeatView *view;
 
@@ -38,7 +39,8 @@ private:
 public Q_SLOTS:
 	void Generate_HeatView();
 	void TimerTimeOut();
-
+private Q_SLOTS:
+	void RecieveTime(int val);
 private:
 	Ui_MainWindowClass *ui;
 
