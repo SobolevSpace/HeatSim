@@ -89,6 +89,9 @@ bool HeatDataModel::Query(workboardPass para)
 	case TIME:
 		setTime20((int)para.getChangeValue());
 		return true;
+	case INITIALCOND:
+		setInitCondi(para.getWorkBoard());
+		return true;
 	}
 }
 
@@ -110,11 +113,13 @@ void HeatDataModel::calculateMidcondi()
 	*(midcondi[0]) = *initcondi;
 
 	/*===FOR TEST ONLY===*/
+	/*
 	newmat[97][93].setProperty(1);
 	newmat[97][93].setTemperature(25);
 	newmat[97][95].setProperty(-1);
 	newmat[97][95].setTemperature(20);
 	*midcondi[0] = newmat;
+	*/
 	/*===FOR TEST ONLY===*/
 
 	for (i = 1; i < 401; ++i)
