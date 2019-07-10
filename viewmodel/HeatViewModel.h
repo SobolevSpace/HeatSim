@@ -1,5 +1,5 @@
-#pragma once
-#include "../others/ETL/include/etlbase.h"
+ #pragma once
+#include "etlbase.h"
 #include "../model/HeatDataModel.h"
 #include "HeatViewModelSink.h"
 #include "QueryCommand.h"

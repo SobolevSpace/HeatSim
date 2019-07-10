@@ -27,6 +27,7 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindowClass
 {
 public:
+    QAction *actionaddHeatSoure;
     QWidget *centralWidget;
     QPushButton *Button_GenHeatView;
     QLabel *labelCount;
@@ -39,6 +40,8 @@ public:
         if (MainWindowClass->objectName().isEmpty())
             MainWindowClass->setObjectName(QStringLiteral("MainWindowClass"));
         MainWindowClass->resize(600, 400);
+        actionaddHeatSoure = new QAction(MainWindowClass);
+        actionaddHeatSoure->setObjectName(QStringLiteral("actionaddHeatSoure"));
         centralWidget = new QWidget(MainWindowClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         Button_GenHeatView = new QPushButton(centralWidget);
@@ -59,6 +62,8 @@ public:
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindowClass->setStatusBar(statusBar);
 
+        mainToolBar->addAction(actionaddHeatSoure);
+
         retranslateUi(MainWindowClass);
 
         QMetaObject::connectSlotsByName(MainWindowClass);
@@ -67,6 +72,7 @@ public:
     void retranslateUi(QMainWindow *MainWindowClass)
     {
         MainWindowClass->setWindowTitle(QApplication::translate("MainWindowClass", "MainWindow", Q_NULLPTR));
+        actionaddHeatSoure->setText(QApplication::translate("MainWindowClass", "addHeatSoure", Q_NULLPTR));
         Button_GenHeatView->setText(QApplication::translate("MainWindowClass", "Generate", Q_NULLPTR));
         labelCount->setText(QApplication::translate("MainWindowClass", "TextLabel", Q_NULLPTR));
     } // retranslateUi

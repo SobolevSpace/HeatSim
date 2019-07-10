@@ -39,9 +39,6 @@
     <ClCompile Include="heatview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="workboard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="precomp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -49,6 +46,33 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mainwindowcommandsink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="myheader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QtGuiClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\parameter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\workboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\HeatDataModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="viewmodel\HeatViewModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="viewmodel\HeatViewModelSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="viewmodel\QueryCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,12 +83,18 @@
     <QtMoc Include="heatview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="QtGuiClass.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="MainWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="heatview.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="QtGuiClass.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -74,9 +104,6 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="workboard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="precomp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -336,6 +363,33 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="myheader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common\parameter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common\workboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="app.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\HeatDataModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="viewmodel\HeatViewModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="viewmodel\HeatViewModelSink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="viewmodel\QueryCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
