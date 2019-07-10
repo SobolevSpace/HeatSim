@@ -93,3 +93,40 @@ workboard& workboard::operator= (const std::vector<std::vector<point> >& mat) {
 	}
 	return *this;
 }
+
+
+workboardPass::workboardPass():wb(),changeType(NOCHANGE) {
+	;
+}
+
+workboardPass::workboardPass(const workboard& w):wb(w),changeType(NOCHANGE) {
+	;
+}
+
+CType workboardPass::getChangeType() {
+	return changeType;
+}
+
+void workboardPass::setChangeType(CType c) {
+	changeType = c;
+}
+
+double workboardPass::getChangeValue() {
+	return changeValue;
+}
+
+void workboardPass::setChangeValue(double val) {
+	changeValue = val;
+}
+
+workboard workboardPass::getWorkBoard() {
+	return wb;
+}
+
+void workboardPass::setWorkBoard(const workboard& w) {
+	wb = w;
+}
+
+workboardPass::~workboardPass() {
+	;
+}
