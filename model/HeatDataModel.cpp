@@ -99,24 +99,56 @@ std::shared_ptr<workboard> HeatDataModel::getResult()
 
 void HeatDataModel::calculateMidcondi()
 {
-	int i, j, k, size, newsize;
+	int i, j, k, newsize;
 	std::vector<std::vector<point> > mat, newmat;
+	int lefp, rigp, upp, botp, midp;
+	double lef, rig, up, bot, mid;
+
 	midcondi[0]->getPointMat(mat);
 	initcondi->getPointMat(newmat);
 	newsize = newmat.size();
 	*(midcondi[0]) = *initcondi;
+
+	/*===FOR TEST ONLY===*/
+	newmat[97][93].setProperty(1);
+	newmat[97][93].setTemperature(25);
+	newmat[97][95].setProperty(-1);
+	newmat[97][95].setTemperature(20);
+	*midcondi[0] = newmat;
+	/*===FOR TEST ONLY===*/
+
 	for (i = 1; i < 401; ++i)
 	{
 		midcondi[i - 1]->getPointMat(mat);
 		for (j = 0; j < newsize; ++j)
 			for (k = 0; k < newsize; ++k) {
-				double lef, rig, up, bot, ori;
+				midp = mat[j][k].getProperty();
+				mid = mat[j][k].getTemperature();
+				if (midp != 0) {
+					newmat[j][k].setProperty(midp);
+					newmat[j][k].setTemperature(mid);
+					continue;
+				}
+
+				lefp = j == 0 ? 0 : mat[j - 1][k].getProperty();
 				lef = j == 0 ? padTemperature : mat[j - 1][k].getTemperature();
+				// When the left point is adiabatic, set the temperature to the temperature of mid point.
+				if (lefp == -1) lef = mid;
+
+				rigp = j == newsize - 1 ? 0 : mat[j + 1][k].getProperty();
 				rig = j == newsize - 1 ? padTemperature : mat[j + 1][k].getTemperature();
+				if (rigp == -1) rig = mid;
+
+				upp = k == 0 ? 0 : mat[j][k - 1].getProperty();
 				up = k == 0 ? padTemperature : mat[j][k - 1].getTemperature();
+				if (upp == -1) up = mid;
+
+				botp = k == newsize - 1 ? 0 : mat[j][k + 1].getProperty();
 				bot = k == newsize - 1 ? padTemperature : mat[j][k + 1].getTemperature();
-				ori = mat[j][k].getTemperature();
-				newmat[j][k].setTemperature(alpha * (lef + rig + up + bot) + (1 - alpha)*ori);
+				if (botp == -1) bot = mid;
+
+				newmat[j][k].setProperty(0);
+				newmat[j][k].setTemperature(alpha * (lef + rig + up + bot) + (1 - 4 * alpha) * mid);
 			}
 		*midcondi[i] = newmat;
 	}
