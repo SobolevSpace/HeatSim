@@ -30,7 +30,7 @@ HeatDataModel& HeatViewModel::GetModel() throw()
 
 void HeatViewModel::SetWorkboard(std::shared_ptr<workboard> board)
 {
-	m_workboard = board;
+	(*m_workboard) = (*board);
 }
 
 bool HeatViewModel::Query(workboardPass para)
