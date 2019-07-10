@@ -39,6 +39,11 @@ workboard::workboard():size(MAT_SIZE),t_matrix() {
 	for (int i = 0; i < size; i++) {
 		t_matrix[i].resize(size);
 	}
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			t_matrix[i][j] = 0;
+		}
+	}
 }
 
 workboard::~workboard() {

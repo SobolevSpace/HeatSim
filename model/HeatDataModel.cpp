@@ -56,7 +56,8 @@ void HeatDataModel::setTime20(const int time)
 {
 	time20->setPara(time);
 	result = midcondi[time];
-	Fire_OnPropertyChanged("heat_Result");
+	std::string str = "heat_Result";
+	Fire_OnPropertyChanged(str);
 }
 
 void HeatDataModel::setTime20(const timeParameters time)
@@ -87,7 +88,7 @@ bool HeatDataModel::Query(workboardPass para)
 		setAlpha(para.getChangeValue());
 		return true;
 	case TIME:
-		setTime20((int)para.getChangeValue());
+		setTime20((int)(para.getChangeValue()*20+0.1));
 		return true;
 	case INITIALCOND:
 		setInitCondi(para.getWorkBoard());
@@ -136,6 +137,7 @@ void HeatDataModel::calculateMidcondi()
 
 				upp = k == 0 ? 0 : mat[j][k - 1].getProperty();
 				up = k == 0 ? padTemperature : mat[j][k - 1].getTemperature();
+
 				if (upp == -1) up = mid;
 
 				botp = k == size - 1 ? 0 : mat[j][k + 1].getProperty();
@@ -143,6 +145,7 @@ void HeatDataModel::calculateMidcondi()
 				if (botp == -1) bot = mid;
 
 				newmat[j][k].setTemperature(alpha * (lef + rig + up + bot) + (1 - 4 * alpha) * mid);
+
 			}
 		*midcondi[i] = newmat;
 	}

@@ -58,8 +58,14 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionaddHeatSoure"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionaddHeatSoure">
+   <property name="text">
+    <string>addHeatSoure</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

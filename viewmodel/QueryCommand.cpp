@@ -15,5 +15,5 @@ void QueryCommand::SetParameter(const std::any& param)
 void QueryCommand::Exec()
 {
 	bool bresult = m_pVM->Query(m_param);
-	m_pVM->Fire_OnCommandComplete("Query", bresult);
+	m_pVM->Fire_OnCommandComplete("heat_Result", bresult);
 }

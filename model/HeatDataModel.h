@@ -1,5 +1,5 @@
 #pragma once
-#include "../others/ETL/include/etlbase.h"
+#include "etlbase.h"
 
 #include "../common/workboard.h"
 #include "../common/parameter.h"
