@@ -777,9 +777,9 @@ void MainWindow::Set_Buttons()
 	//connect(ui->actionGenerate, SIGNAL(triggered()), this, SLOT(Generate_HeatView()));
 }
 
-void MainWindow::set_QueryCommand(const std::shared_ptr<ICommandBase>& cmd) throw()
+void MainWindow::set_CalcCommand(const std::shared_ptr<ICommandBase>& cmd) throw()
 {
-	m_cmdQuery = cmd;
+	m_cmdCalc = cmd;
 }
 
 std::shared_ptr<IPropertyNotification> MainWindow::get_PropertySink() throw()
@@ -828,9 +828,6 @@ void MainWindow::Transport(CType type, double changeval) {
 	wbp.setChangeValue(changeval);
 	wbp.setWorkBoard(initial_condition);
 	
-	m_cmdQuery->SetParameter(param);
-	m_cmdQuery->Exec();
-//	ui->labelCount->setText(QString::number(changeval));
-	view->update();
-//	view->get_Heatdim()->__show();
+	m_cmdCalc->SetParameter(param);
+	m_cmdCalc->Exec();
 }

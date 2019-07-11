@@ -79,7 +79,7 @@ public:
 	~MainWindow();
 	void init();
 	void Set_Buttons();
-	void set_QueryCommand(const std::shared_ptr<ICommandBase>& cmd) throw();
+	void set_CalcCommand(const std::shared_ptr<ICommandBase>& cmd) throw();
 	std::shared_ptr<IPropertyNotification> get_PropertySink() throw();
 	std::shared_ptr<ICommandNotification> get_CommandSink() throw();
 	void Transport(CType type, double changeval);
@@ -96,7 +96,7 @@ private:
 //////////////////////
 
 private:
-	std::shared_ptr<ICommandBase> m_cmdQuery;
+	std::shared_ptr<ICommandBase> m_cmdCalc;
 	std::shared_ptr<MainWindowPropertySink> m_sinkProperty;
 	std::shared_ptr<MainWindowCommandSink> m_sinkCommand;
 public Q_SLOTS:
