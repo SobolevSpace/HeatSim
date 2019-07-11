@@ -21,14 +21,13 @@ public:
 	void setTime20(const std::shared_ptr<timeParameters>);
 	int getTime20() const;
 	
-	bool Query(workboardPass para);
+	bool Calc(const workboardPass& para);
 
 	std::shared_ptr<workboard> getResult();
 
 private:
 	void calculateMidcondi();
 
-	std::shared_ptr<workboard> initcondi;
 	double padTemperature;
 	double alpha;
 

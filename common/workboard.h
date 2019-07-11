@@ -14,8 +14,8 @@ public:
 	point();
 	point(double T);
 	point(double T, int propertyID);
-	double getTemperature();
-	int getProperty();
+	double getTemperature() const;
+	int getProperty() const;
 	void setTemperature(double T);
 	void setProperty(int PID);
 	~point();
@@ -28,10 +28,10 @@ private:
 
 public:
 	workboard();
-	int getSize();
+	int getSize() const;
 	workboard& operator= (const workboard& s);
 	workboard& operator= (const std::vector<std::vector<point> >& mat);
-	void getPointMat(std::vector<std::vector<point> >& ret);
+	void getPointMat(std::vector<std::vector<point> >& ret) const;
 	void __show();//FOR TEST ONLY
 	~workboard();
 };
@@ -47,11 +47,11 @@ private:
 public:
 	workboardPass();
 	workboardPass(const workboard& w);
-	CType getChangeType();
+	CType getChangeType() const;
 	void setChangeType(CType c);
-	double getChangeValue();
+	double getChangeValue() const;
 	void setChangeValue(double val);
-	workboard getWorkBoard();
+	workboard getWorkBoard() const;
 	void setWorkBoard(const workboard& w);
 	~workboardPass();
 };

@@ -14,11 +14,11 @@ point::point(double T, int PID) : temperature(T), propertyID(PID) {
 	;
 }
 
-double point::getTemperature() {
+double point::getTemperature() const {
 	return temperature;
 }
 
-int point::getProperty() {
+int point::getProperty() const {
 	return propertyID;
 }
 
@@ -69,7 +69,7 @@ workboard& workboard::operator= (const workboard& s) {
 	return *this;
 }
 
-void workboard::getPointMat(std::vector<std::vector<point> >& ret) {
+void workboard::getPointMat(std::vector<std::vector<point> >& ret) const {
 	ret.resize(size);
 	for (int i = 0; i < size; i++) {
 		ret[i].resize(size);
@@ -81,7 +81,7 @@ void workboard::getPointMat(std::vector<std::vector<point> >& ret) {
 	}
 }
 
-int workboard::getSize() {
+int workboard::getSize() const {
 	return size;
 }
 
@@ -108,7 +108,7 @@ workboardPass::workboardPass(const workboard& w):wb(w),changeType(NOCHANGE) {
 	;
 }
 
-CType workboardPass::getChangeType() {
+CType workboardPass::getChangeType()  const {
 	return changeType;
 }
 
@@ -116,7 +116,7 @@ void workboardPass::setChangeType(CType c) {
 	changeType = c;
 }
 
-double workboardPass::getChangeValue() {
+double workboardPass::getChangeValue()  const {
 	return changeValue;
 }
 
@@ -124,7 +124,7 @@ void workboardPass::setChangeValue(double val) {
 	changeValue = val;
 }
 
-workboard workboardPass::getWorkBoard() {
+workboard workboardPass::getWorkBoard()  const {
 	return wb;
 }
 

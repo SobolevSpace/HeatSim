@@ -2,7 +2,7 @@
 
 #include <vector>
 
-HeatDataModel::HeatDataModel() : initcondi(std::make_shared<workboard>()), padTemperature(20), alpha(0.2), time20(std::make_shared<timeParameters>())
+HeatDataModel::HeatDataModel() : padTemperature(20), alpha(0.2), time20(std::make_shared<timeParameters>()), result(std::make_shared<workboard>())
 {
 	for (int i = 0; i <= 401; ++i) midcondi[i] = std::make_shared<workboard>();
 	result = midcondi[0];
@@ -11,21 +11,21 @@ HeatDataModel::HeatDataModel() : initcondi(std::make_shared<workboard>()), padTe
 
 void HeatDataModel::setInitCondi(const workboard condi)
 {
-	*initcondi = condi;
+	*midcondi[0] = condi;
 	calculateMidcondi();
 	Fire_OnPropertyChanged("heat_Result");
 }
 
 void HeatDataModel::setInitCondi(const std::shared_ptr<workboard> condi)
 {
-	*initcondi = *condi;
+	*midcondi[0] = *condi;
 	calculateMidcondi();
 	Fire_OnPropertyChanged("heat_Result");
 }
 
 std::shared_ptr<workboard> HeatDataModel::getInitCondi()
 {
-	return initcondi;
+	return midcondi[0];
 }
 
 void HeatDataModel::setPadTemperature(const double temp)
@@ -55,7 +55,7 @@ double HeatDataModel::getAlpha() const
 void HeatDataModel::setTime20(const int time)
 {
 	time20->setPara(time);
-	result = midcondi[time];
+	*result = *midcondi[time];
 	std::string str = "heat_Result";
 	Fire_OnPropertyChanged(str);
 }
@@ -63,14 +63,14 @@ void HeatDataModel::setTime20(const int time)
 void HeatDataModel::setTime20(const timeParameters time)
 {
 	*time20 = time;
-	result = midcondi[time20->get()];
+	*result = *midcondi[time20->get()];
 	Fire_OnPropertyChanged("heat_Result");
 }
 
 void HeatDataModel::setTime20(const std::shared_ptr<timeParameters> time)
 {
 	*time20 = *time;
-	result = midcondi[time20->get()];
+	*result = *midcondi[time20->get()];
 	Fire_OnPropertyChanged("heat_Result");
 }
 
@@ -79,7 +79,7 @@ int HeatDataModel::getTime20() const
 	return time20->get();
 }
 
-bool HeatDataModel::Query(workboardPass para)
+bool HeatDataModel::Calc(const workboardPass& para)
 {
 	switch (para.getChangeType()) {
 	case NOCHANGE:
@@ -93,7 +93,11 @@ bool HeatDataModel::Query(workboardPass para)
 	case INITIALCOND:
 		setInitCondi(para.getWorkBoard());
 		return true;
+	default:
+		throw(std::runtime_error("NO SUCH PARAMETER CHANGE LOADED"));
+		break;
 	}
+	return true;
 }
 
 std::shared_ptr<workboard> HeatDataModel::getResult()
@@ -108,13 +112,13 @@ void HeatDataModel::calculateMidcondi()
 	int lefp, rigp, upp, botp, midp;
 	double lef, rig, up, bot, mid;
 
-	initcondi->getPointMat(mat);
-	initcondi->getPointMat(newmat);
+	midcondi[0]->getPointMat(mat);
+	midcondi[0]->getPointMat(newmat);
 	size = mat.size();
-	*(midcondi[0]) = *initcondi;
 
 	for (i = 1; i < 401; ++i)
 	{
+
 		midcondi[i - 1]->getPointMat(mat);
 		for (j = 0; j < size; ++j)
 			for (k = 0; k < size; ++k) {
