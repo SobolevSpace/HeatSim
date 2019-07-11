@@ -7,7 +7,7 @@ class HeatViewModel;
 class HeatViewModelSink : public IPropertyNotification
 {
 public:
-	HeatViewModelSink(HeatViewModel* p);
+	HeatViewModelSink(HeatViewModel* p) throw();
 
 	virtual void OnPropertyChanged(const std::string& str);
 

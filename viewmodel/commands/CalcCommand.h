@@ -2,14 +2,14 @@
 
 #include "etlbase.h"
 
-#include "../common/workboard.h"
+#include "../../common/workboard.h"
 
 class HeatViewModel;
 
-class QueryCommand : public ICommandBase
+class CalcCommand : public ICommandBase
 {
 public:
-	QueryCommand(HeatViewModel *p) throw();
+	CalcCommand(HeatViewModel *p) throw();
 
 	virtual void SetParameter(const std::any& param);
 	virtual void Exec();

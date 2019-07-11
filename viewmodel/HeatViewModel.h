@@ -1,8 +1,8 @@
  #pragma once
 #include "etlbase.h"
 #include "../model/HeatDataModel.h"
-#include "HeatViewModelSink.h"
-#include "QueryCommand.h"
+#include "./sinks/HeatViewModelSink.h"
+#include "./commands/CalcCommand.h"
 
 class HeatViewModel : public Proxy_PropertyNotification<HeatViewModel>,
 	public Proxy_CommandNotification<HeatViewModel>
@@ -18,15 +18,12 @@ public:
 
 	HeatDataModel& GetModel() throw();
 
-	void SetWorkboard(std::shared_ptr<workboard> board);
-	bool Query(workboardPass para);
+	bool Calculate(const workboardPass& para);
 
 private:
 	std::shared_ptr<HeatDataModel> m_HeatModel;
 
-	std::shared_ptr<workboard> m_workboard;
-
-	std::shared_ptr<QueryCommand> m_cmdQuery;
+	std::shared_ptr<CalcCommand> m_cmdCalc;
 
 	std::shared_ptr<HeatViewModelSink> m_sink;
 
