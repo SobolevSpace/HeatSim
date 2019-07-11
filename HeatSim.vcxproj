@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B12702AD-ABFB-343A-A199-8E24837244A3}</ProjectGuid>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
+    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>C:\Users\ahf\source\repos\HeatSim\HeatSim;C:\Users\ahf\source\repos\HeatSim\HeatSim\others\ETL\WTL\include;C:\Users\ahf\source\repos\HeatSim\HeatSim\others\ETL\include;C:\Users\ahf\source\repos\HeatSim\HeatSim\others\ETL\ATL\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>C:\Users\ahf\source\repos\HeatSim\HeatSim;C:\Users\ahf\source\repos\HeatSim\HeatSim\others\ETL\WTL\include;C:\Users\ahf\source\repos\HeatSim\HeatSim\others\ETL\include;C:\Users\ahf\source\repos\HeatSim\HeatSim\others\ETL\ATL\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <QtMoc>
+      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <IncludePath>C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
+      <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
+      <QTDIR>$(QTDIR)</QTDIR>
+    </QtMoc>
+    <QtUic>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
+      <QTDIR>$(QTDIR)</QTDIR>
+    </QtUic>
+    <QtRcc>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+      <QTDIR>$(QTDIR)</QTDIR>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat />
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <QtMoc>
+      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
+      <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
+      <QTDIR>$(QTDIR)</QTDIR>
+    </QtMoc>
+    <QtUic>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
+      <QTDIR>$(QTDIR)</QTDIR>
+    </QtUic>
+    <QtRcc>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+      <QTDIR>$(QTDIR)</QTDIR>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="app\app.cpp" />
+    <ClCompile Include="common\parameter.cpp" />
+    <ClCompile Include="common\workboard.cpp" />
+    <ClCompile Include="GeneratedFiles\qrc_MainWindow.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="model\HeatDataModel.cpp" />
+    <ClCompile Include="myheader.cpp" />
+    <ClCompile Include="precomp.cpp" />
+    <ClCompile Include="QtGuiClass.cpp" />
+    <ClCompile Include="viewmodel\commands\CalcCommand.cpp" />
+    <ClCompile Include="viewmodel\HeatViewModel.cpp" />
+    <ClCompile Include="viewmodel\sinks\HeatViewModelSink.cpp" />
+    <ClCompile Include="view\heatview.cpp" />
+    <ClCompile Include="window\MainWindow.cpp" />
+    <ClCompile Include="window\sink\mainwindowcommandsink.cpp" />
+    <ClCompile Include="window\sink\mainwindowpropertysink.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="QtGuiClass.ui" />
+    <CustomBuild Include="view\heatview.ui" />
+    <QtUic Include="window\MainWindow.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="app\app.h" />
+    <ClInclude Include="common\parameter.h" />
+    <ClInclude Include="common\workboard.h" />
+    <ClInclude Include="GeneratedFiles\ui_heatview.h" />
+    <ClInclude Include="GeneratedFiles\ui_MainWindow.h" />
+    <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h" />
+    <ClInclude Include="model\HeatDataModel.h" />
+    <ClInclude Include="myheader.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlacc.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlalloc.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlbase.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlbuild.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlchecked.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlcoll.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlcom.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlcomcli.h" />
+    <ClInclude Include="others\ETL\ATL\include\ATLComMem.h" />
+    <ClInclude Include="others\ETL\ATL\include\ATLComTime.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlconv.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlcore.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlctl.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlcur.h" />
+    <ClInclude Include="others\ETL\ATL\include\atldb.h" />
+    <ClInclude Include="others\ETL\ATL\include\atldbcli.h" />
+    <ClInclude Include="others\ETL\ATL\include\atldbgmem.h" />
+    <ClInclude Include="others\ETL\ATL\include\atldbsch.h" />
+    <ClInclude Include="others\ETL\ATL\include\atldef.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlenc.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlevent.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlexcept.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlfile.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlhandler.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlhandlerimpl.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlhost.h" />
+    <ClInclude Include="others\ETL\ATL\include\atliface.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlimage.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlmem.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlpath.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlplus.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlpreviewctrlimpl.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlrc.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlsafe.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlsecurity.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlsimpcoll.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlsimpstr.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlsnap.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlsocket.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlstdthunk.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlstr.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlsync.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlthunk.h" />
+    <ClInclude Include="others\ETL\ATL\include\atltime.h" />
+    <ClInclude Include="others\ETL\ATL\include\atltrace.h" />
+    <ClInclude Include="others\ETL\ATL\include\atltransactionmanager.h" />
+    <ClInclude Include="others\ETL\ATL\include\atltypes.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlutil.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlwin.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlwinverapi.h" />
+    <ClInclude Include="others\ETL\ATL\include\atlxml.h" />
+    <ClInclude Include="others\ETL\ATL\include\cstringt.h" />
+    <ClInclude Include="others\ETL\ATL\include\ocdb.h" />
+    <ClInclude Include="others\ETL\ATL\include\ocdbid.h" />
+    <ClInclude Include="others\ETL\ATL\include\olebind.h" />
+    <ClInclude Include="others\ETL\ATL\include\statreg.h" />
+    <ClInclude Include="others\ETL\include\etlbase.h" />
+    <ClInclude Include="others\ETL\include\imp\ImageColor.h" />
+    <ClInclude Include="others\ETL\include\imp\ImageData.h" />
+    <ClInclude Include="others\ETL\include\imp\ImageProcess.h" />
+    <ClInclude Include="others\ETL\include\ui\ImageCtrl.h" />
+    <ClInclude Include="others\ETL\include\ui\LabelCtrl.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlapp.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlcrack.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlctrls.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlctrlw.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlctrlx.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlddx.h" />
+    <ClInclude Include="others\ETL\WTL\include\atldlgs.h" />
+    <ClInclude Include="others\ETL\WTL\include\atldwm.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlfind.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlframe.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlgdi.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlmisc.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlprint.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlres.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlribbon.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlscrl.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlsplit.h" />
+    <ClInclude Include="others\ETL\WTL\include\atltheme.h" />
+    <ClInclude Include="others\ETL\WTL\include\atluser.h" />
+    <ClInclude Include="others\ETL\WTL\include\atlwinx.h" />
+    <ClInclude Include="viewmodel\commands\CalcCommand.h" />
+    <ClInclude Include="viewmodel\HeatViewModel.h" />
+    <ClInclude Include="viewmodel\HeatViewModelSink.h" />
+    <ClInclude Include="viewmodel\QueryCommand.h" />
+    <ClInclude Include="viewmodel\sinks\HeatViewModelSink.h" />
+    <ClInclude Include="window\sink\mainwindowcommandsink.h" />
+    <ClInclude Include="window\sink\mainwindowpropertysink.h" />
+    <QtMoc Include="window\MainWindow.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
+    <QtMoc Include="view\heatview.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
+    <ClInclude Include="precomp.h" />
+    <QtMoc Include="QtGuiClass.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="others\ETL\ATL\include\atliface.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="others\ETL\ATL\include\atlres.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="window\MainWindow.qrc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_x64="msvc2017_64" MocOptions="" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
