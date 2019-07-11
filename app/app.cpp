@@ -16,7 +16,7 @@ bool app::init() {
 	m_spViewModel = std::make_shared<HeatViewModel>();
 	m_spViewModel->SetModel(spModel);
 
-	m_wndMain.set_QueryCommand(m_spViewModel->getCalcCommand());
+	m_wndMain.set_CalcCommand(m_spViewModel->getCalcCommand());
 	
 	
 	m_spViewModel->AddPropertyNotification(m_wndMain.get_PropertySink());
@@ -24,13 +24,11 @@ bool app::init() {
 
 
 	m_wndMain.view->set_Heatdim(m_spViewModel->getResult());
-//	m_spViewModel->getResult()->__show();
+
 	return true;
 }
 
 void app::show() {
-//	m_wndMain.view->set_Heatdim(m_spViewModel->getResult());
-
 	m_wndMain.show();
 }
 

@@ -58,10 +58,6 @@ void HeatView::set_Heatdim(const std::shared_ptr<workboard>& sp)
     m_Heatdim=sp;
 }
 
-std::shared_ptr<workboard>& HeatView::get_Heatdim()
-{
-	return m_Heatdim;
-}
 //
 QColor HeatView::Get_Color(double T)
 {
@@ -75,8 +71,4 @@ QColor HeatView::Get_Color(double T)
 }
 
 
-void HeatView::ButtonPressBackToMainWindow()
-{
-
-}
 

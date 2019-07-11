@@ -51,9 +51,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_MainWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="window\MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -340,15 +337,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="others\ETL\WTL\include\atlwinx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_heatview.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="common\parameter.h">

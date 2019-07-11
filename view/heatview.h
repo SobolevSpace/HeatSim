@@ -30,8 +30,6 @@ public:
     void paintEvent(QPaintEvent*);
     QColor Get_Color(double T);
     void set_Heatdim(const std::shared_ptr<workboard>& sp);
-    void ButtonPressBackToMainWindow();
-	std::shared_ptr<workboard>& get_Heatdim();
 private:
     Ui_HeatView *ui;
     std::shared_ptr<workboard> m_Heatdim;

@@ -13,16 +13,16 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B12702AD-ABFB-343A-A199-8E24837244A3}</ProjectGuid>
     <Keyword>Qt4VSv1.0</Keyword>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
@@ -126,12 +126,6 @@
     <ClCompile Include="app\app.cpp" />
     <ClCompile Include="common\parameter.cpp" />
     <ClCompile Include="common\workboard.cpp" />
-    <ClCompile Include="GeneratedFiles\qrc_MainWindow.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="model\HeatDataModel.cpp" />
     <ClCompile Include="viewmodel\commands\CalcCommand.cpp" />
@@ -153,8 +147,6 @@
     <ClInclude Include="app\app.h" />
     <ClInclude Include="common\parameter.h" />
     <ClInclude Include="common\workboard.h" />
-    <ClInclude Include="GeneratedFiles\ui_heatview.h" />
-    <ClInclude Include="GeneratedFiles\ui_MainWindow.h" />
     <ClInclude Include="model\HeatDataModel.h" />
     <ClInclude Include="others\ETL\ATL\include\atlacc.h" />
     <ClInclude Include="others\ETL\ATL\include\atlalloc.h" />
