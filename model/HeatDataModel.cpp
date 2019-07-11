@@ -60,20 +60,6 @@ void HeatDataModel::setTime20(const int time)
 	Fire_OnPropertyChanged(str);
 }
 
-void HeatDataModel::setTime20(const timeParameters time)
-{
-	*time20 = time;
-	*result = *midcondi[time20->get()];
-	Fire_OnPropertyChanged("heat_Result");
-}
-
-void HeatDataModel::setTime20(const std::shared_ptr<timeParameters> time)
-{
-	*time20 = *time;
-	*result = *midcondi[time20->get()];
-	Fire_OnPropertyChanged("heat_Result");
-}
-
 int HeatDataModel::getTime20() const
 {
 	return time20->get();
@@ -123,11 +109,7 @@ void HeatDataModel::calculateMidcondi()
 		for (j = 0; j < size; ++j)
 			for (k = 0; k < size; ++k) {
 				midp = mat[j][k].getProperty();
-				if (midp != 0) {
-					//newmat[j][k].setProperty(midp);
-					//newmat[j][k].setTemperature(mid);
-					continue;
-				}
+				if (midp != 0) continue;
 				mid = mat[j][k].getTemperature();
 
 				lefp = j == 0 ? 0 : mat[j - 1][k].getProperty();
