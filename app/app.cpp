@@ -24,13 +24,11 @@ bool app::init() {
 
 
 	m_wndMain.view->set_Heatdim(m_spViewModel->getResult());
-//	m_spViewModel->getResult()->__show();
+
 	return true;
 }
 
 void app::show() {
-//	m_wndMain.view->set_Heatdim(m_spViewModel->getResult());
-
 	m_wndMain.show();
 }
 

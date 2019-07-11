@@ -155,6 +155,7 @@
     <ClInclude Include="common\workboard.h" />
     <ClInclude Include="GeneratedFiles\ui_heatview.h" />
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h" />
+    <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h" />
     <ClInclude Include="model\HeatDataModel.h" />
     <ClInclude Include="others\ETL\ATL\include\atlacc.h" />
     <ClInclude Include="others\ETL\ATL\include\atlalloc.h" />

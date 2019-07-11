@@ -23,11 +23,6 @@ std::shared_ptr<ICommandBase> HeatViewModel::getCalcCommand()
 	return std::static_pointer_cast<ICommandBase>(m_cmdCalc);
 }
 
-HeatDataModel& HeatViewModel::GetModel() throw()
-{
-	return *m_HeatModel;
-}
-
 bool HeatViewModel::Calculate(const workboardPass& para)
 {
 	return m_HeatModel->Calc(para);

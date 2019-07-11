@@ -22,7 +22,7 @@ class MainWindow : public QMainWindow
 signals:
 	void select_function(int function, int shape = LINE, QString path = QString());
 public:
-//////////////////////////
+
 	void CreateActions();
 	void CreateButtons();
 	void CreateSpinBox();
@@ -73,12 +73,11 @@ private slots:
 	void save_file();
 	void save_as();
 
-//////////////////////////
+
 public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
 	void init();
-	void Set_Buttons();
 	void set_CalcCommand(const std::shared_ptr<ICommandBase>& cmd) throw();
 	std::shared_ptr<IPropertyNotification> get_PropertySink() throw();
 	std::shared_ptr<ICommandNotification> get_CommandSink() throw();
@@ -91,9 +90,9 @@ private:
 	int count;
 	void InitTimer();
 	void Updatewb();
-///////////////////////
+
 	workboard initial_condition;
-//////////////////////
+
 
 private:
 	std::shared_ptr<ICommandBase> m_cmdCalc;

@@ -20,7 +20,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::init()
 {
-	Set_Buttons();
 	count = 0;
 	m_timer = new QTimer(this);
 	//��ʱ�������źŲ�
@@ -324,52 +323,51 @@ void MainWindow::CreateSpinBox() {
 	SpinBoxPainterColorB->setVisible(false);
 	//new
 	pSliderColorR = new QSlider(this);
-	pSliderColorR->setOrientation(Qt::Horizontal);  // 脣庐脝陆路陆脧貌
-	pSliderColorR->setMinimum(0);  // 脳卯脨隆脰碌
-	pSliderColorR->setMaximum(255);  // 脳卯麓贸脰碌
-	pSliderColorR->setSingleStep(1);  // 虏陆鲁陇
+	pSliderColorR->setOrientation(Qt::Horizontal);  
+	pSliderColorR->setMinimum(0);  
+	pSliderColorR->setMaximum(255);  
+	pSliderColorR->setSingleStep(1);  
 	pSliderColorR->setGeometry(SpinBoxPainterColorR->geometry().x()
 		+ SpinBoxPainterColorR->geometry().width(), 0, 90, 40);
 
-	// 脕卢陆脫脨脜潞脜虏脹拢篓脧脿禄楼赂脛卤盲拢漏
+	
 	connect(SpinBoxPainterColorR, SIGNAL(valueChanged(int)), pSliderColorR, SLOT(setValue(int)));
 	connect(pSliderColorR, SIGNAL(valueChanged(int)), SpinBoxPainterColorR, SLOT(setValue(int)));
 	pSliderColorR->setVisible(false);
-	//
-		//new
+
 	pSliderColorG = new QSlider(this);
-	pSliderColorG->setOrientation(Qt::Horizontal);  // 脣庐脝陆路陆脧貌
-	pSliderColorG->setMinimum(0);  // 脳卯脨隆脰碌
-	pSliderColorG->setMaximum(255);  // 脳卯麓贸脰碌
-	pSliderColorG->setSingleStep(1);  // 虏陆鲁陇
+	pSliderColorG->setOrientation(Qt::Horizontal);  
+	pSliderColorG->setMinimum(0);  
+	pSliderColorG->setMaximum(255);  
+	pSliderColorG->setSingleStep(1); 
 	pSliderColorG->setGeometry(SpinBoxPainterColorG->geometry().x()
 		+ SpinBoxPainterColorG->geometry().width(), 0, 90, 40);
 
-	// 脕卢陆脫脨脜潞脜虏脹拢篓脧脿禄楼赂脛卤盲拢漏
+	// 
 	connect(SpinBoxPainterColorG, SIGNAL(valueChanged(int)), pSliderColorG, SLOT(setValue(int)));
 	connect(pSliderColorG, SIGNAL(valueChanged(int)), SpinBoxPainterColorG, SLOT(setValue(int)));
 	pSliderColorG->setVisible(false);
 	//
 		//new
 	pSliderColorB = new QSlider(this);
-	pSliderColorB->setOrientation(Qt::Horizontal);  // 脣庐脝陆路陆脧貌
-	pSliderColorB->setMinimum(0);  // 脳卯脨隆脰碌
-	pSliderColorB->setMaximum(255);  // 脳卯麓贸脰碌
-	pSliderColorB->setSingleStep(1);  // 虏陆鲁陇
+	pSliderColorB->setOrientation(Qt::Horizontal);  
+	pSliderColorB->setMinimum(0);  
+	pSliderColorB->setMaximum(255);  
+	pSliderColorB->setSingleStep(1); 
 	pSliderColorB->setGeometry(SpinBoxPainterColorB->geometry().x()
 		+ SpinBoxPainterColorB->geometry().width(), 0, 90, 40);
 
-	// 脕卢陆脫脨脜潞脜虏脹拢篓脧脿禄楼赂脛卤盲拢漏
+	
 	connect(SpinBoxPainterColorB, SIGNAL(valueChanged(int)), pSliderColorB, SLOT(setValue(int)));
 	connect(pSliderColorB, SIGNAL(valueChanged(int)), SpinBoxPainterColorB, SLOT(setValue(int)));
 	pSliderColorB->setVisible(false);
 	//
 		//new
 	pSliderWidth = new QSlider(this);
-	pSliderWidth->setOrientation(Qt::Horizontal);  // 脣庐脝陆路陆脧貌
-	pSliderWidth->setMinimum(1);  // 脳卯脨隆脰碌
-	pSliderWidth->setMaximum(10);  // 脳卯麓贸脰碌
-	pSliderWidth->setSingleStep(1);  // 虏陆鲁陇
+	pSliderWidth->setOrientation(Qt::Horizontal); 
+	pSliderWidth->setMinimum(1);  
+	pSliderWidth->setMaximum(10);  
+	pSliderWidth->setSingleStep(1);  
 	pSliderWidth->setValue(3);
 	pSliderWidth->setGeometry(SpinBoxPainterWidth->geometry().x()
 		+ SpinBoxPainterWidth->geometry().width(), 0, 100, 40);
@@ -753,11 +751,6 @@ void MainWindow::Generate_HeatView()
 	
 	view->show();
 	//InitTimer();
-	//view->resize(100, 100);
-	//m_cmdQuery->SetParameter();
-	//m_cmdQuery->Exec();
-
-	//this->hide();
 }
 
 void MainWindow::Updatewb() 
@@ -769,12 +762,6 @@ void MainWindow::Updatewb()
 			
 		}
 	}
-}
-
-void MainWindow::Set_Buttons()
-{
-	connect(ui->Button_GenHeatView, SIGNAL(clicked(bool)), this, SLOT(Generate_HeatView()));
-	//connect(ui->actionGenerate, SIGNAL(triggered()), this, SLOT(Generate_HeatView()));
 }
 
 void MainWindow::set_CalcCommand(const std::shared_ptr<ICommandBase>& cmd) throw()
@@ -807,18 +794,9 @@ void MainWindow::TimerTimeOut()
 		return;
 	}
 	count++;
-	//ui->labelCount->setText(QString::number(count));
-	/*
-	std::any param(std::make_any<workboardPass>());
-	workboardPass& wbp = std::any_cast<workboardPass&>(param);
-	wbp.setChangeType(TIME);
-	wbp.setChangeValue(count*0.05);
-	wbp.setWorkBoard(initial_condition);
-	m_cmdQuery->SetParameter(param);
-	m_cmdQuery->Exec();
-	*/
+
 	Transport(TIME, count*0.05);
-	//view->update();
+
 }
 
 void MainWindow::Transport(CType type, double changeval) {

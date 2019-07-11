@@ -348,9 +348,6 @@
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="common\parameter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -379,6 +376,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="view\myheader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

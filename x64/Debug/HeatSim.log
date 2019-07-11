@@ -1,3 +1,12 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(944,5): warning MSB8027: 名为 qrc_MainWindow.cpp 的两个或更多文件将生成到同一位置的输出。这会导致错误的生成结果。   调用的文件是 GeneratedFiles\qrc_MainWindow.cpp, GeneratedFiles\qrc_MainWindow.cpp。
+﻿  Moc'ing window\MainWindow.h...
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(944,5): warning MSB8027: 名为 qrc_MainWindow.cpp 的两个或更多文件将生成到同一位置的输出。这会导致错误的生成结果。   调用的文件是 GeneratedFiles\qrc_MainWindow.cpp, GeneratedFiles\qrc_MainWindow.cpp。
+  moc_MainWindow.cpp
+  app.cpp
+  main.cpp
+  HeatViewModel.cpp
+  CalcCommand.cpp
+  HeatViewModelSink.cpp
   MainWindow.cpp
+  mainwindowcommandsink.cpp
+  mainwindowpropertysink.cpp
   HeatSim.vcxproj -> C:\Users\ahf\Documents\GitHub\HeatSim\x64\Debug\HeatSim.exe

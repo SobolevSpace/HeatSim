@@ -16,8 +16,6 @@ public:
 
 	std::shared_ptr<ICommandBase> getCalcCommand();
 
-	HeatDataModel& GetModel() throw();
-
 	bool Calculate(const workboardPass& para);
 
 private:
