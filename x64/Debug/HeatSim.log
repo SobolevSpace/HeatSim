@@ -1,0 +1,8 @@
+﻿  app.cpp
+  main.cpp
+  heatview.cpp
+  MainWindow.cpp
+  mainwindowpropertysink.cpp
+  moc_MainWindow.cpp
+  moc_heatview.cpp
+  HeatSim.vcxproj -> C:\Users\ahf\Documents\GitHub\HeatSim\x64\Debug\HeatSim.exe
