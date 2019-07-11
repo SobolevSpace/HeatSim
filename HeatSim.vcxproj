@@ -55,7 +55,7 @@
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include;.\GeneratedFiles\$(ConfigurationName);C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtCore;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtGui;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtANGLE;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -65,33 +65,33 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Qt\Qt5.9.0\5.9\msvc2017_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>C:\Qt\Qt5.9.0\5.9\msvc2017_64\lib\qtmaind.lib;C:\Qt\Qt5.9.0\5.9\msvc2017_64\lib\Qt5Cored.lib;C:\Qt\Qt5.9.0\5.9\msvc2017_64\lib\Qt5Guid.lib;C:\Qt\Qt5.9.0\5.9\msvc2017_64\lib\Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <IncludePath>C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
+      <IncludePath>C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include;.\GeneratedFiles\$(ConfigurationName);C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtCore;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtGui;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtANGLE;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
-      <QTDIR>$(QTDIR)</QTDIR>
+      <QTDIR>C:\Qt\Qt5.9.0\5.9\msvc2017_64</QTDIR>
     </QtMoc>
     <QtUic>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
       <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
-      <QTDIR>$(QTDIR)</QTDIR>
+      <QTDIR>C:\Qt\Qt5.9.0\5.9\msvc2017_64</QTDIR>
     </QtUic>
     <QtRcc>
       <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
       <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
-      <QTDIR>$(QTDIR)</QTDIR>
+      <QTDIR>C:\Qt\Qt5.9.0\5.9\msvc2017_64</QTDIR>
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include;.\GeneratedFiles\$(ConfigurationName);C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtCore;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtGui;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtANGLE;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -100,26 +100,26 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Qt\Qt5.9.0\5.9\msvc2017_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>C:\Qt\Qt5.9.0\5.9\msvc2017_64\lib\qtmain.lib;C:\Qt\Qt5.9.0\5.9\msvc2017_64\lib\Qt5Core.lib;C:\Qt\Qt5.9.0\5.9\msvc2017_64\lib\Qt5Gui.lib;C:\Qt\Qt5.9.0\5.9\msvc2017_64\lib\Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
+      <IncludePath>.\GeneratedFiles;.;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include;.\GeneratedFiles\$(ConfigurationName);C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtCore;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtGui;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtANGLE;C:\Qt\Qt5.9.0\5.9\msvc2017_64\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
-      <QTDIR>$(QTDIR)</QTDIR>
+      <QTDIR>C:\Qt\Qt5.9.0\5.9\msvc2017_64</QTDIR>
     </QtMoc>
     <QtUic>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
       <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
-      <QTDIR>$(QTDIR)</QTDIR>
+      <QTDIR>C:\Qt\Qt5.9.0\5.9\msvc2017_64</QTDIR>
     </QtUic>
     <QtRcc>
       <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
       <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
-      <QTDIR>$(QTDIR)</QTDIR>
+      <QTDIR>C:\Qt\Qt5.9.0\5.9\msvc2017_64</QTDIR>
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -139,7 +139,23 @@
     <ClCompile Include="window\sink\mainwindowpropertysink.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="view\heatview.ui" />
+    <QtUic Include="view\heatview.ui">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+      <FileType>Document</FileType>
+    </QtUic>
     <QtUic Include="view\QtGuiClass.ui" />
     <QtUic Include="window\MainWindow.ui" />
   </ItemGroup>
@@ -147,6 +163,8 @@
     <ClInclude Include="app\app.h" />
     <ClInclude Include="common\parameter.h" />
     <ClInclude Include="common\workboard.h" />
+    <ClInclude Include="GeneratedFiles\ui_MainWindow.h" />
+    <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h" />
     <ClInclude Include="model\HeatDataModel.h" />
     <ClInclude Include="others\ETL\ATL\include\atlacc.h" />
     <ClInclude Include="others\ETL\ATL\include\atlalloc.h" />
@@ -234,20 +252,11 @@
     <ClInclude Include="viewmodel\HeatViewModel.h" />
     <ClInclude Include="viewmodel\sinks\HeatViewModelSink.h" />
     <ClInclude Include="view\myheader.h" />
-    <QtMoc Include="view\QtGuiClass.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-    </QtMoc>
+    <QtMoc Include="view\QtGuiClass.h" />
     <ClInclude Include="window\sink\mainwindowcommandsink.h" />
     <ClInclude Include="window\sink\mainwindowpropertysink.h" />
-    <QtMoc Include="window\MainWindow.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-    </QtMoc>
-    <QtMoc Include="view\heatview.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-    </QtMoc>
+    <QtMoc Include="window\MainWindow.h" />
+    <QtMoc Include="view\heatview.h" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="others\ETL\ATL\include\atliface.idl" />
@@ -266,7 +275,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_x64="msvc2017_64" MocOptions="" />
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
