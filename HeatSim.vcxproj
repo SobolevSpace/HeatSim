@@ -134,20 +134,19 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="model\HeatDataModel.cpp" />
-    <ClCompile Include="myheader.cpp" />
-    <ClCompile Include="precomp.cpp" />
-    <ClCompile Include="QtGuiClass.cpp" />
     <ClCompile Include="viewmodel\commands\CalcCommand.cpp" />
     <ClCompile Include="viewmodel\HeatViewModel.cpp" />
     <ClCompile Include="viewmodel\sinks\HeatViewModelSink.cpp" />
     <ClCompile Include="view\heatview.cpp" />
+    <ClCompile Include="view\myheader.cpp" />
+    <ClCompile Include="view\QtGuiClass.cpp" />
     <ClCompile Include="window\MainWindow.cpp" />
     <ClCompile Include="window\sink\mainwindowcommandsink.cpp" />
     <ClCompile Include="window\sink\mainwindowpropertysink.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="QtGuiClass.ui" />
     <CustomBuild Include="view\heatview.ui" />
+    <QtUic Include="view\QtGuiClass.ui" />
     <QtUic Include="window\MainWindow.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -156,9 +155,7 @@
     <ClInclude Include="common\workboard.h" />
     <ClInclude Include="GeneratedFiles\ui_heatview.h" />
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h" />
-    <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h" />
     <ClInclude Include="model\HeatDataModel.h" />
-    <ClInclude Include="myheader.h" />
     <ClInclude Include="others\ETL\ATL\include\atlacc.h" />
     <ClInclude Include="others\ETL\ATL\include\atlalloc.h" />
     <ClInclude Include="others\ETL\ATL\include\atlbase.h" />
@@ -243,9 +240,12 @@
     <ClInclude Include="others\ETL\WTL\include\atlwinx.h" />
     <ClInclude Include="viewmodel\commands\CalcCommand.h" />
     <ClInclude Include="viewmodel\HeatViewModel.h" />
-    <ClInclude Include="viewmodel\HeatViewModelSink.h" />
-    <ClInclude Include="viewmodel\QueryCommand.h" />
     <ClInclude Include="viewmodel\sinks\HeatViewModelSink.h" />
+    <ClInclude Include="view\myheader.h" />
+    <QtMoc Include="view\QtGuiClass.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+    </QtMoc>
     <ClInclude Include="window\sink\mainwindowcommandsink.h" />
     <ClInclude Include="window\sink\mainwindowpropertysink.h" />
     <QtMoc Include="window\MainWindow.h">
@@ -254,11 +254,6 @@
     </QtMoc>
     <QtMoc Include="view\heatview.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\WTL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\ATL\include;C:\Users\HONOR\Desktop\program\Cpp\SJDXQcourseware-master\programs\demo\code\others\ETL\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
-    </QtMoc>
-    <ClInclude Include="precomp.h" />
-    <QtMoc Include="QtGuiClass.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
   </ItemGroup>

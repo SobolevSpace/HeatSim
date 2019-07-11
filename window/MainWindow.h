@@ -13,8 +13,8 @@
 #include "ui_MainWindow.h"
 #include "sink/MainWindowPropertySink.h"
 #include "sink/MainWindowCommandSink.h"
-#include "../myheader.h"
-#include "../QtGuiClass.h"
+#include "../view/myheader.h"
+#include "../view/QtGuiClass.h"
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT

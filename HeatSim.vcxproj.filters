@@ -30,15 +30,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="precomp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="myheader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QtGuiClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="common\parameter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -49,12 +40,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="viewmodel\HeatViewModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="viewmodel\HeatViewModelSink.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="viewmodel\QueryCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="app\app.cpp">
@@ -84,30 +69,33 @@
     <ClCompile Include="viewmodel\sinks\HeatViewModelSink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="view\myheader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="view\QtGuiClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="QtGuiClass.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="window\MainWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="view\heatview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="view\QtGuiClass.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="QtGuiClass.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="window\MainWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="view\QtGuiClass.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="precomp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="others\ETL\ATL\include\atlacc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -360,9 +348,6 @@
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="myheader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -378,12 +363,6 @@
     <ClInclude Include="viewmodel\HeatViewModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="viewmodel\HeatViewModelSink.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="viewmodel\QueryCommand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="app\app.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -397,6 +376,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="viewmodel\sinks\HeatViewModelSink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="view\myheader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
