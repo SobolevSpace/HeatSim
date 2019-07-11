@@ -14,7 +14,7 @@ public:
 
 	std::shared_ptr<workboard> getResult() throw();
 
-	std::shared_ptr<ICommandBase> getQueryCommand();
+	std::shared_ptr<ICommandBase> getCalcCommand();
 
 	HeatDataModel& GetModel() throw();
 

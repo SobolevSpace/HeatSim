@@ -18,7 +18,7 @@ std::shared_ptr<workboard> HeatViewModel::getResult() throw()
 	return m_HeatModel->getResult();
 }
 
-std::shared_ptr<ICommandBase> HeatViewModel::getQueryCommand()
+std::shared_ptr<ICommandBase> HeatViewModel::getCalcCommand()
 {
 	return std::static_pointer_cast<ICommandBase>(m_cmdCalc);
 }
