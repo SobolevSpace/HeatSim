@@ -25,6 +25,7 @@ public slots:
 	void setPenColor(const QColor &color);
 	void setPenSize(const int width);
 	void setProperty(_PROPERTY p);
+	void setTemperature(double T);
 signals:
 	void resizeWindow(int w, int h);
 
@@ -42,6 +43,7 @@ private:
 	QPixmap *pix;
 	QPen *pen;
 	_PROPERTY _property;
+	double Temperature;
 	//QLineEdit *edit;
 	QTextEdit *edit;
 
@@ -68,5 +70,6 @@ public:
 	void set_selected_color(const QColor &color);
 	void set_selected_size(const int width);
 	void set_selected_property(_PROPERTY p);
+	void set_selected_temperature(double T);
 	const std::vector<Figure*>& getFigureArray(void);
 };

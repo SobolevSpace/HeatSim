@@ -232,6 +232,24 @@ void MainWindow::CreateActions()
 	* @return      void
 */
 void MainWindow::CreateSpinBox() {
+	SpinBoxTem = new QDoubleSpinBox(this);
+	SpinBoxTem->setFixedWidth(70);
+	SpinBoxTem->setFixedHeight(20);
+	SpinBoxTem->unsetCursor();
+	SpinBoxTem->setRange(0, 10000);
+	SpinBoxTem->setSingleStep(10);
+	SpinBoxTem->setDecimals(2);
+	SpinBoxTem->setValue(293);
+	SpinBoxTem->setSuffix("K");
+	SpinBoxTem->setWrapping(true);
+	SpinBoxTem->setGeometry(0, 50, 70, 20);
+	//connect spinbox to its working function
+	connect(SpinBoxTem, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+		[=](double value) {
+		qt_gui_class->setTemperature(value - 273.0);
+		qt_gui_class->set_selected_temperature(value - 273.0);
+	});
+
 	int start = 320;
 	//create a spinbox to represent and change the width
 	SpinBoxPainterWidth = new QSpinBox(this);
@@ -748,20 +766,34 @@ void MainWindow::RecieveTime(int val) {
 void MainWindow::Generate_HeatView()
 {
 	connect(view, SIGNAL(SendTime(int)), this, SLOT(RecieveTime(int)));
-	
+	Updatewb();
 	view->show();
 	//InitTimer();
 }
 
-void MainWindow::Updatewb() 
+
+void MainWindow::Updatewb()
 {
 	const std::vector<Figure*>& figure_array = qt_gui_class->getFigureArray();
 	if (figure_array.size() > 0) {
-		for (size_t i = 0; i < figure_array.size(); i++)
-		{
-			
+		std::vector<std::vector<point> > A;
+		initial_condition.getPointMat(A);
+		int size = initial_condition.getSize();
+		int sedge = this->frameGeometry().width() / size;
+		for (int pos = 0;pos < size*size;pos++) {
+			A[pos%size][pos / size].setTemperature(0.0);
+			A[pos%size][pos / size].setProperty(NORMAL);
+			for (size_t i = 0; i < figure_array.size(); i++) {
+				if (figure_array[i]->is_in_figure(QPoint((pos / size)*sedge, (pos%size)*sedge))) {
+					A[pos%size][pos / size].setTemperature(figure_array[i]->get_temperature());
+					A[pos%size][pos / size].setProperty(figure_array[i]->get_property());
+				}
+			}
 		}
+		initial_condition = A;
+		Transport(INITIALCOND, 0.0);
 	}
+
 }
 
 void MainWindow::set_CalcCommand(const std::shared_ptr<ICommandBase>& cmd) throw()

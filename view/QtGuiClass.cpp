@@ -17,7 +17,7 @@ QtGuiClass::QtGuiClass(QWidget *parent)
 	draw_shape = LINE;
 	function_state = DEFAULT;
 	_property = NORMAL;
-
+	Temperature = 20.0;
 	setMouseTracking(true);
 	setPalette(QPalette(Qt::white));
 	setAutoFillBackground(true);
@@ -147,6 +147,10 @@ void QtGuiClass::setPenSize(const int width)
 
 void QtGuiClass::setProperty(_PROPERTY p) {
 	_property = p;
+}
+
+void QtGuiClass::setTemperature(double T) {
+	Temperature = T;
 }
 
 /* * @brief   to deal with mouse press event
@@ -552,7 +556,12 @@ void QtGuiClass::saveCurrentFigure(const int shape, const QPoint &start, const Q
 	}
 	//push figure back to figure_array
 	if (figure)
+	{
+		figure->set_property(_property);
+		figure->set_temperature(Temperature);
 		figure_array.push_back(figure);
+	}
+		
 }
 
 /* * @brief   draw all the figure in figure_array
@@ -751,6 +760,16 @@ void QtGuiClass::set_selected_property(_PROPERTY p) {
 		if (figure_array[i]->is_selected) {
 			//set property
 			figure_array[i]->set_property(p);
+		}
+	}
+	update();
+}
+
+void QtGuiClass::set_selected_temperature(double T) {
+	for (int i = 0;i < figure_array.size();i++) {
+		if (figure_array[i]->is_selected) {
+			//set temperature
+			figure_array[i]->set_temperature(T);
 		}
 	}
 	update();
