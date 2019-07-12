@@ -12,4 +12,7 @@ void HeatViewModelSink::OnPropertyChanged(const std::string& str)
 	if (str == "heat_Result") {
 		m_pVM->Fire_OnPropertyChanged(str);
 	}
+	if (str == "avg_Result") {
+		m_pVM->Fire_OnPropertyChanged(str);
+	}
 }
