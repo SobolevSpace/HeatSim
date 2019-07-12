@@ -1,11 +1,12 @@
 #pragma once
 
 #include "etlbase.h"
+#include "../../common/parameter.h"
 #include <utility>
 
 class HeatViewModel;
 
-class AvgCommand : public ICommandBase;
+class AvgCommand : public ICommandBase
 {
 public:
 	AvgCommand(HeatViewModel* p) throw();
@@ -16,5 +17,5 @@ public:
 private:
 	HeatViewModel * m_pVM;
 
-	std::pair<int, int> param;
+	std::pair<pointParameters, pointParameters> m_param;
 };
