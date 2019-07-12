@@ -378,6 +378,9 @@
     <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_heatview.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="others\ETL\ATL\include\atliface.idl">

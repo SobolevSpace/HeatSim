@@ -163,6 +163,7 @@
     <ClInclude Include="app\app.h" />
     <ClInclude Include="common\parameter.h" />
     <ClInclude Include="common\workboard.h" />
+    <ClInclude Include="GeneratedFiles\ui_heatview.h" />
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h" />
     <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h" />
     <ClInclude Include="model\HeatDataModel.h" />

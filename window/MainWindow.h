@@ -9,6 +9,7 @@
 #include <QMessageBox>
 #include <QObject>
 #include <QPushButton>
+#include <QToolBar> 
 #include "../view/heatview.h"
 #include "ui_MainWindow.h"
 #include "sink/MainWindowPropertySink.h"
