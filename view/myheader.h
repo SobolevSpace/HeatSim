@@ -134,7 +134,7 @@ public:
 		* @return      bool : true for selected, false for not selected
 	*/
 	bool is_in_it(const QPoint &start_point_, const QPoint &end_point_) const;
-
+	bool is_in_figure(const QPoint &point);
 	/* * @brief   clear move point
 		* @param [in]  void
 		* @param [out] void
@@ -436,6 +436,7 @@ public:
 	Random(const std::vector<QPoint*> &list, const int length, const QPen &pen);
 	void DrawFigure(QPainter &painter, const QPen *pen) const;
 	bool selected(const QPoint &point) const;
+	bool is_in_figure(const QPoint &point);
 };
 
 /* * @brief       represent text boxes

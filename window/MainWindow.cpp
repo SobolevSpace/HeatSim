@@ -55,10 +55,10 @@ void MainWindow::CreateButtons()
 	pMenu->addAction(Save);
 	pMenu->addAction(SaveAs);
 
-	pMenu = menuBar()->addMenu(tr("Tool"));
+	/*pMenu = menuBar()->addMenu(tr("Tool"));
 	pMenu->addAction(LineWidth);
 	pMenu->addAction(LineColor);
-
+	*/
 	pMenu = menuBar()->addMenu(tr("Figure"));
 	pMenu->addAction(Line);
 	pMenu->addAction(Rectangle);
@@ -78,15 +78,15 @@ void MainWindow::CreateButtons()
 	//add actions to Bar
 	pToolBar->addAction(Generate);
 	pToolBar->addAction(Random);
-	pToolBar->addAction(Eraser);
+	//pToolBar->addAction(Eraser);
 	pToolBar->addAction(Select);
 	pToolBar->addAction(Move);
 	pToolBar->addAction(Amplify);
 	pToolBar->addAction(Shrink);
-	pToolBar->addAction(RotateL);
-	pToolBar->addAction(RotateR);
-	pToolBar->addAction(Picture);
-	pToolBar->addAction(Text);
+	//pToolBar->addAction(RotateL);
+	//pToolBar->addAction(RotateR);
+	//pToolBar->addAction(Picture);
+	//pToolBar->addAction(Text);
 	pToolBar->addAction(Delete);
 	
 }
@@ -390,7 +390,6 @@ void MainWindow::CreateSpinBox() {
 	pSliderWidth->setGeometry(SpinBoxPainterWidth->geometry().x()
 		+ SpinBoxPainterWidth->geometry().width(), 0, 100, 40);
 
-	// 脕卢陆脫脨脜潞脜虏脹拢篓脧脿禄楼赂脛卤盲拢漏
 	connect(SpinBoxPainterWidth, SIGNAL(valueChanged(int)), pSliderWidth, SLOT(setValue(int)));
 	connect(pSliderWidth, SIGNAL(valueChanged(int)), SpinBoxPainterWidth, SLOT(setValue(int)));
 	pSliderWidth->setVisible(false);
@@ -545,14 +544,17 @@ void MainWindow::set_eraser() {
 
 void MainWindow::set_property_normal() {
 	qt_gui_class->setProperty(NORMAL);
+	qt_gui_class->set_selected_property(NORMAL);
 }
 
 void MainWindow::set_property_heatinsulation(){
 	qt_gui_class->setProperty(HEATINSULATION);
+	qt_gui_class->set_selected_property(HEATINSULATION);
 }
 
 void MainWindow::set_property_heatsource(){
 	qt_gui_class->setProperty(HEATSOURCE);
+	qt_gui_class->set_selected_property(HEATSOURCE);
 }
 
 

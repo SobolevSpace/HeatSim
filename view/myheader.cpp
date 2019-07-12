@@ -128,6 +128,10 @@ bool Line::is_in_it(const QPoint &start_point_, const QPoint &end_point_) const
 	}
 }
 
+bool Line::is_in_figure(const QPoint &point) {
+	return selected(point);
+}
+
 void Line::clear_move_point() {
 	//update start and end
 	mid += move_p;
@@ -456,6 +460,10 @@ bool Random::selected(const QPoint &point) const
 			min_dist = dist;
 	}
 	return (min_dist < 6.0);
+}
+
+bool Random::is_in_figure(const QPoint &point) {
+	return selected(point);
 }
 
 //function for class Text
