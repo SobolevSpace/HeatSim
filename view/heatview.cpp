@@ -38,18 +38,11 @@ void HeatView::paintEvent(QPaintEvent*)
     /////////////////////////////////////////////////
     srand((int)time(0));
     for(int i=0;i<size*size;i++){
-        //painter.setPen(Get_Color(i%200));
         painter.fillRect(QRect((i%size)*(this->frameGeometry().width()/size),(i/size)*((this->frameGeometry().height()-20)/size),
                        int(this->frameGeometry().width()/size*1) ,int((this->frameGeometry().height()-20)/size*1)),
                          QBrush(Get_Color(A[i/100][i%100].getTemperature())));
     }
 
-    /*painter.fillRect(QRect(0,this->frameGeometry().height()/2,
-        this->frameGeometry().width()/2,this->frameGeometry().height()/2  ),
-           QBrush(Get_Color(200.0)));
-    painter.fillRect(QRect(0,0,this->frameGeometry().width(),this->frameGeometry().height() ),QBrush(Get_Color(-55.0)));
-*/
-//painter.setPen(QColor(0, 160, 230));
 
 }
 
@@ -58,7 +51,6 @@ void HeatView::set_Heatdim(const std::shared_ptr<workboard>& sp)
     m_Heatdim=sp;
 }
 
-//
 QColor HeatView::Get_Color(double T)
 {
 	const int upper_bound = 511;
