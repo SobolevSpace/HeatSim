@@ -869,8 +869,8 @@ void MainWindow::askAverageTem() {
 	//m_param = std::any_cast<std::pair<pointParameters, pointParameters>>(param);
 	std::any param(std::make_any<std::pair<pointParameters, pointParameters>>());
 	std::pair<pointParameters, pointParameters>& TwoPoint = std::any_cast<std::pair<pointParameters, pointParameters>&>(param);
-	TwoPoint.first.setXY(qt_gui_class->startP().x(), qt_gui_class->startP().y());
-	TwoPoint.second.setXY(qt_gui_class->endP().x(), qt_gui_class->endP().y());
+	TwoPoint.first.setXY(qt_gui_class->startP().x()/6, qt_gui_class->startP().y()/6);
+	TwoPoint.second.setXY(qt_gui_class->endP().x()/6, qt_gui_class->endP().y()/6);
 	
 	m_cmdAverage->SetParameter(param);
 	m_cmdAverage->Exec();

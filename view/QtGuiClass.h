@@ -39,6 +39,7 @@ private:
 
 	QPoint start_point;
 	QPoint end_point;
+	QPoint s, e;
 	QPoint *temp;
 	QPixmap *pix;
 	QPen *pen;

@@ -85,7 +85,7 @@ void CoordinateView::Paint()
 	{
 		painter.drawLine(O.x(), O.y() - (i + 1)*height / 10,
 			O.x() - 4, O.y() - (i + 1)*height / 10);
-		painter.drawText(O.x() - 20, O.y() - (i + 0.85)*height / 10,
+		painter.drawText(O.x() - 30, O.y() - (i + 0.85)*height / 10,
 			QString::number(double(int((_maStep*(i + 1))*10))/10));
 	}
 

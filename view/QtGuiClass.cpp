@@ -160,6 +160,7 @@ void QtGuiClass::setTemperature(double T) {
 */
 void QtGuiClass::mousePressEvent(QMouseEvent *event)
 {
+	s = event->pos();
 	switch (event->button()) {
 	case Qt::LeftButton:
 		switch (function_state) {
@@ -356,6 +357,7 @@ void QtGuiClass::mouseMoveEvent(QMouseEvent *event)
 */
 void QtGuiClass::mouseReleaseEvent(QMouseEvent *event)
 {
+	e = event->pos();
 	switch (event->button()) {
 	case Qt::LeftButton:
 		switch (function_state) {
@@ -776,11 +778,11 @@ void QtGuiClass::set_selected_temperature(double T) {
 }
 
 QPoint QtGuiClass::startP() const{
-	return start_point;
+	return s;
 }
 
 QPoint QtGuiClass::endP() const{
-	return end_point;
+	return e;
 }
 
 const std::vector<Figure*>& QtGuiClass::getFigureArray(void) {
