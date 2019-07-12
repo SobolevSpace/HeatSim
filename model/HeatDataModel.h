@@ -22,12 +22,14 @@ public:
 	bool Calc(const workboardPass& para);
 
 	std::shared_ptr<workboard> getResult();
+//	std::shared_ptr<vector<double> > getAverage();
 
 private:
 	void calculateMidcondi();
 
 	double padTemperature;
 	double alpha;
+//	int 
 
 	std::shared_ptr<workboard> midcondi[401];
 
