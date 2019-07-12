@@ -56,18 +56,14 @@ QColor HeatView::Get_Color(double T)
 	const int upper_bound = 373;
 	const int lower_bound = 273;
 	int r, g, b;
-	double percent = (T + 273 - lower_bound) / (upper_bound - lower_bound + 1);
+	double percent = (T + 273 - lower_bound) / (upper_bound - lower_bound);
 	int Tint = percent * 255 * 4;
-	if (percent < 0) r = g = b = 0x00;
-	else if (percent > 1) r = g = b = 0xff;
-	else {
-		r = Tint - 510;
-		r = r < 0 ? 0 : r>255 ? 255 : r;
-		g = 510 - abs(Tint - 510);
-		g = g < 0 ? 0 : g>255 ? 255 : g;
-		b = 510 - Tint;
-		b = b < 0 ? 0 : b>255 ? 255 : b;
-	}
+	r = Tint - 510;
+	r = r < 0 ? 0 : r>255 ? 255 : r;
+	g = 510 - abs(Tint - 510);
+	g = g < 0 ? 0 : g>255 ? 255 : g;
+	b = 510 - Tint;
+	b = b < 0 ? 0 : b>255 ? 255 : b;
 	return QColor(r, g, b);
 }
 
