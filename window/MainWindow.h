@@ -14,8 +14,10 @@
 #include "ui_MainWindow.h"
 #include "sink/MainWindowPropertySink.h"
 #include "sink/MainWindowCommandSink.h"
+#include "../common/parameter.h"
 #include "../view/myheader.h"
 #include "../view/QtGuiClass.h"
+#include "../view/CoordinateView.h"
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -23,7 +25,6 @@ class MainWindow : public QMainWindow
 signals:
 	void select_function(int function, int shape = LINE, QString path = QString());
 public:
-
 	void CreateActions();
 	void CreateButtons();
 	void CreateSpinBox();
@@ -33,7 +34,7 @@ public:
 	QMenu *pMenu;
 	QAction *Help, *Line, *Rectangle, *Ellipse, *Polygon, *Delete, *Picture, *Select, *Move, *RotateL, *RotateR, *Amplify, *Shrink, *Random, *Text;
 	QAction *New, *Open, *Save, *SaveAs;
-	QAction *Generate;
+	QAction *Generate,*Average;
 	QToolBar *pToolBar;
 	QAction *Property_Normal, *Property_HeatIsulation, *Property_HeatSource;
 	QSpinBox *SpinBoxPainterWidth, *SpinBoxPainterColorR, *SpinBoxPainterColorG, *SpinBoxPainterColorB;
@@ -80,12 +81,14 @@ public:
 	~MainWindow();
 	void init();
 	void set_CalcCommand(const std::shared_ptr<ICommandBase>& cmd) throw();
+	void set_AverageCommand(const std::shared_ptr<ICommandBase>& cmd)throw();
 	std::shared_ptr<IPropertyNotification> get_PropertySink() throw();
 	std::shared_ptr<ICommandNotification> get_CommandSink() throw();
 	void Transport(CType type, double changeval);
+	void askAverageTem();
 
 	HeatView *view;
-
+	CoordinateView *Coorview;
 private:
 	QTimer *m_timer;
 	int count;
@@ -97,10 +100,12 @@ private:
 
 private:
 	std::shared_ptr<ICommandBase> m_cmdCalc;
+	std::shared_ptr<ICommandBase> m_cmdAverage;
 	std::shared_ptr<MainWindowPropertySink> m_sinkProperty;
 	std::shared_ptr<MainWindowCommandSink> m_sinkCommand;
 public Q_SLOTS:
 	void Generate_HeatView();
+	void AverageTem_Coordinate();
 	void TimerTimeOut();
 private Q_SLOTS:
 	void RecieveTime(int val);

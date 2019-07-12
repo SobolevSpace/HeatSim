@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 	ui->setupUi(this);
 	view = new HeatView;
+	Coorview = new CoordinateView;
 	init();
 }
 
@@ -77,6 +78,7 @@ void MainWindow::CreateButtons()
 	pToolBar = this->addToolBar(tr("Bar"));
 	//add actions to Bar
 	pToolBar->addAction(Generate);
+	pToolBar->addAction(Average);
 	pToolBar->addAction(Random);
 	//pToolBar->addAction(Eraser);
 	pToolBar->addAction(Select);
@@ -213,17 +215,23 @@ void MainWindow::CreateActions()
 	Generate->setStatusTip("Generate Heatdim");
 	connect(Generate, &QAction::triggered, this, &MainWindow::Generate_HeatView);
 
-	//new
+	Average = new QAction(tr("Average"), this);
+	Average->setStatusTip("Average Temperature");
+	connect(Average, &QAction::triggered, this, &MainWindow::AverageTem_Coordinate);
+
 	Property_Normal = new QAction(tr("Normal"), this);
 	Property_Normal->setStatusTip("NORMAL");
 	connect(Property_Normal, &QAction::triggered, this, &MainWindow::set_property_normal);
+	
 	Property_HeatSource = new QAction(tr("HeatSource"), this);
 	Property_HeatSource->setStatusTip("HEATSOURCE");
 	connect(Property_HeatSource, &QAction::triggered, this, &MainWindow::set_property_heatsource);
+	
 	Property_HeatIsulation = new QAction(tr("HeatInsulation"), this);
 	Property_HeatIsulation->setStatusTip("HEATINSULATION");
 	connect(Property_HeatIsulation, &QAction::triggered, this, &MainWindow::set_property_heatinsulation);
 	
+
 }
 
 /* * @brief   create spinbox
@@ -722,6 +730,8 @@ void MainWindow::closeEvent(QCloseEvent* event)
 {
 	//if the user is closing the main window
 	//stop the closing action and prompt the user to save
+	event->accept();
+	return;
 	QMessageBox box(QMessageBox::Question, tr("Save"), tr("Do you want to save the picture?"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
 
 	switch (box.exec()) {
@@ -773,6 +783,12 @@ void MainWindow::Generate_HeatView()
 	//InitTimer();
 }
 
+void MainWindow::AverageTem_Coordinate()
+{
+	askAverageTem();
+	//Coorview->show();
+}
+
 
 void MainWindow::Updatewb()
 {
@@ -801,6 +817,11 @@ void MainWindow::Updatewb()
 void MainWindow::set_CalcCommand(const std::shared_ptr<ICommandBase>& cmd) throw()
 {
 	m_cmdCalc = cmd;
+}
+
+void MainWindow::set_AverageCommand(const std::shared_ptr<ICommandBase>& cmd) throw()
+{
+	m_cmdAverage = cmd;
 }
 
 std::shared_ptr<IPropertyNotification> MainWindow::get_PropertySink() throw()
@@ -842,4 +863,15 @@ void MainWindow::Transport(CType type, double changeval) {
 	
 	m_cmdCalc->SetParameter(param);
 	m_cmdCalc->Exec();
+}
+
+void MainWindow::askAverageTem() {
+	//m_param = std::any_cast<std::pair<pointParameters, pointParameters>>(param);
+	std::any param(std::make_any<std::pair<pointParameters, pointParameters>>());
+	std::pair<pointParameters, pointParameters>& TwoPoint = std::any_cast<std::pair<pointParameters, pointParameters>&>(param);
+	TwoPoint.first.setXY(qt_gui_class->startP().x(), qt_gui_class->startP().y());
+	TwoPoint.second.setXY(qt_gui_class->endP().x(), qt_gui_class->endP().y());
+	
+	m_cmdAverage->SetParameter(param);
+	m_cmdAverage->Exec();
 }

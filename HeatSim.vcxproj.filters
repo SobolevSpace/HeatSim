@@ -72,6 +72,12 @@
     <ClCompile Include="view\QtGuiClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="view\CoordinateView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="viewmodel\commands\AvgCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="window\MainWindow.h">
@@ -83,6 +89,9 @@
     <QtMoc Include="view\QtGuiClass.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="view\CoordinateView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="window\MainWindow.ui">
@@ -92,6 +101,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="view\heatview.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="view\CoordinateView.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -379,6 +391,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_heatview.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_CoordinateView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="viewmodel\commands\AvgCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

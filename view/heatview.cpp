@@ -42,8 +42,6 @@ void HeatView::paintEvent(QPaintEvent*)
                        int(this->frameGeometry().width()/size*1) ,int((this->frameGeometry().height()-20)/size*1)),
                          QBrush(Get_Color(A[i/100][i%100].getTemperature())));
     }
-
-
 }
 
 void HeatView::set_Heatdim(const std::shared_ptr<workboard>& sp)

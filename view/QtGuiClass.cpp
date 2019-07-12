@@ -775,6 +775,14 @@ void QtGuiClass::set_selected_temperature(double T) {
 	update();
 }
 
+QPoint QtGuiClass::startP() const{
+	return start_point;
+}
+
+QPoint QtGuiClass::endP() const{
+	return end_point;
+}
+
 const std::vector<Figure*>& QtGuiClass::getFigureArray(void) {
 	return figure_array;
 }
