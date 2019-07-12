@@ -74,18 +74,23 @@ int HeatDataModel::getTime20() const
 	return time20->get();
 }
 
-void HeatDataModel::setPointParameters(const pointParameters& p1, const pointParameters& p2)
+bool HeatDataModel::setPointParameters(const pointParameters& p1, const pointParameters& p2)
 {
-	int x1, x2, y1, y2;
+	int x1, x2, y1, y2, size;
 	x1 = p1.getX();
 	x2 = p2.getX();
 	y1 = p1.getY();
 	y2 = p2.getY();
+	
+	size = midcondi[0]->getSize();
+	if (x1 < 0 || x2 < 0 || y1 < 0 || y2 < 0) return false;
+	if (x1 >= size || x2 >= size || y1 >= size || y2 >= size) return false;
+
 	this->p1.setXY(x1 < x2 ? x1 : x2, y1 < y2 ? y1 : y2);
 	this->p2.setXY(x1 > x2 ? x1 : x2, y1 > y2 ? y1 : y2);
 	calculateAverage();
 	Fire_OnPropertyChanged("avg_Result");
-	return;
+	return true;
 }
 
 void HeatDataModel::getPointParameters(pointParameters& p1, pointParameters& p2)
@@ -113,13 +118,12 @@ bool HeatDataModel::Calc(const workboardPass& para)
 		throw(std::runtime_error("NO SUCH PARAMETER CHANGE LOADED"));
 		break;
 	}
-	return true;
+	return false;
 }
 
 bool HeatDataModel::CalcAvg(const pointParameters p1, const pointParameters p2)
 {
-	this->setPointParameters(p1, p2);
-	return true;
+	return this->setPointParameters(p1, p2);
 }
 
 std::shared_ptr<workboard> HeatDataModel::getResult()

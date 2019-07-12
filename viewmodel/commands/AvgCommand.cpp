@@ -13,6 +13,7 @@ void AvgCommand::SetParameter(const std::any& param)
 
 void AvgCommand::Exec()
 {
-	m_pVM->CalcAvg(m_param.first, m_param.second);
-	m_pVM->Fire_OnCommandComplete("avg_Result", true);
+	bool bres;
+	bres = m_pVM->CalcAvg(m_param.first, m_param.second);
+	m_pVM->Fire_OnCommandComplete("avg_Result", bres);
 }

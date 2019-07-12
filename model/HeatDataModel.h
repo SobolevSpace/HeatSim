@@ -18,7 +18,7 @@ public:
 	double getAlpha() const;
 	void setTime20(const int time);
 	int getTime20() const;
-	void setPointParameters(const pointParameters& p1, const pointParameters& p2);
+	bool setPointParameters(const pointParameters& p1, const pointParameters& p2);
 	void getPointParameters(pointParameters& p1, pointParameters& p2);
 	
 	bool Calc(const workboardPass& para);
