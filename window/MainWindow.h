@@ -36,7 +36,7 @@ public:
 	QToolBar *pToolBar;
 	QAction *Property_Normal, *Property_HeatIsulation, *Property_HeatSource;
 	QSpinBox *SpinBoxPainterWidth, *SpinBoxPainterColorR, *SpinBoxPainterColorG, *SpinBoxPainterColorB;
-	
+	QDoubleSpinBox *SpinBoxTem;
 	QtGuiClass *qt_gui_class;
 	QSlider *pSliderColorR, *pSliderColorG, *pSliderColorB, *pSliderWidth;
 	QAction *LineWidth, *LineColor;

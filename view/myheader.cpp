@@ -1,14 +1,14 @@
 #include "myheader.h"
 
 //functions for class Figure
-Figure::Figure() : pen(Qt::black, 1, Qt::SolidLine, Qt::SquareCap, Qt::BevelJoin), type(LINE), is_selected(false), rotate(0), move_p(QPoint(0, 0)),_property(NORMAL) {}
+Figure::Figure() : pen(Qt::black, 1, Qt::SolidLine, Qt::SquareCap, Qt::BevelJoin), type(LINE), is_selected(false), rotate(0), move_p(QPoint(0, 0)),_property(NORMAL),temperature(0.0) {}
 
-Figure::Figure(const QPen &pen, const int &type) : pen(pen), type(type), is_selected(false), _property(NORMAL) {
+Figure::Figure(const QPen &pen, const int &type) : pen(pen), type(type), is_selected(false), _property(NORMAL), temperature(0.0) {
 	rotate = 0;
 	move_p = QPoint(0, 0);
 }
 
-Figure::Figure(const int &type) : pen(Qt::black, 1, Qt::SolidLine, Qt::SquareCap, Qt::BevelJoin), type(type), is_selected(false), _property(NORMAL) {
+Figure::Figure(const int &type) : pen(Qt::black, 1, Qt::SolidLine, Qt::SquareCap, Qt::BevelJoin), type(type), is_selected(false), _property(NORMAL), temperature(0.0) {
 	rotate = 0;
 	move_p = QPoint(0, 0);
 }
@@ -27,6 +27,18 @@ void Figure::set_size(const int width) {
 
 void Figure::set_property(_PROPERTY p) {
 	_property = p;
+}
+
+_PROPERTY Figure::get_property() {
+	return _property;
+}
+
+void Figure::set_temperature(double T) {
+	temperature = T;
+}
+
+double Figure::get_temperature() {
+	return temperature;
 }
 
 void Figure::RotateL()
@@ -185,6 +197,10 @@ bool Rectangle::is_in_it(const QPoint &start_point_, const QPoint &end_point_) c
 	}
 }
 
+bool Rectangle::is_in_figure(const QPoint &point) {
+	return (point.x() >= start_x) && (point.x() <= start_x + width) && (point.y() >= start_y) && (point.y() <= start_y + height);
+}
+
 void Rectangle::clear_move_point() {
 	start_x = start_x + move_p.x();
 	start_y = start_y + move_p.y();
@@ -240,6 +256,11 @@ bool Ellipse::is_in_it(const QPoint &start_point_, const QPoint &end_point_) con
 		//frame selection from lower right to upper left
 		return (center.x() <= start_point_.x() && center.x() >= end_point_.x() && center.y() <= start_point_.y() && center.y() >= end_point_.y());
 	}
+}
+
+bool Ellipse::is_in_figure(const QPoint &point) {
+	return (point.x() - center.x())*(point.x() - center.x())*1.0 / (semi_major*semi_major)
+		+ (point.y() - center.y())*(point.y() - center.y())*1.0 / (semi_minor*semi_minor) - 1.0 <= 0.0;
 }
 
 void Ellipse::clear_move_point() {

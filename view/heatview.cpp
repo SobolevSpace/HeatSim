@@ -53,13 +53,16 @@ void HeatView::set_Heatdim(const std::shared_ptr<workboard>& sp)
 
 QColor HeatView::Get_Color(double T)
 {
-	const int upper_bound = 511;
-	const int lower_bound = 0;
-	int Tint = int(T);
-//	Tint += 273;
-    if(T>=upper_bound)return QColor(255,255,255);
-    if(T<=lower_bound)return QColor(0,0,0);
-    return QColor(Tint*10 ,Tint*10, Tint*10 );
+	const int upper_bound = 373;
+	const int lower_bound = 273;
+ 	int Tint = int(T);
+	//Tint += 273;
+	//double TT = ((T+273) - lower_bound)*1.0 / (upper_bound - lower_bound);
+	//Tint = int(TT * 256.0 * 256.0 * 256.0);
+
+    //if(T>=upper_bound)return QColor(255,255,255);
+    //if(T<lower_bound)return QColor(0,0,0);
+    return QColor(Tint*10 ,Tint*10, Tint*10);
 }
 
 

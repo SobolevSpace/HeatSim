@@ -38,9 +38,9 @@ enum _FUNCTION {
 };
 
 enum _PROPERTY{
-	NORMAL,
-	HEATSOURCE,
-	HEATINSULATION,
+	HEATINSULATION = -1,
+	NORMAL = 0,
+	HEATSOURCE
 };
 /* * @brief   calculate the length of a vector
 	* @param [in]  QPoint &: end point of a vector
@@ -71,6 +71,7 @@ public:
 	virtual void clear_move_point() = 0;
 	virtual void Amplify() = 0;
 	virtual void Shrink() = 0;
+	virtual bool is_in_figure(const QPoint &point) { return false; }
 
 	//update move_point
 	void set_move_point(const QPoint &start_point_, const QPoint &end_point_);
@@ -84,6 +85,12 @@ public:
 	void RotateR();
 	//set property
 	void set_property(_PROPERTY p);
+	//get property
+	_PROPERTY get_property();
+	//set temperature
+	void set_temperature(double T);
+	//get temperature
+	double get_temperature();
 
 	QPen pen;             //store information of pen, such as color and width
 	int type;                //store the type of this figure
@@ -91,6 +98,7 @@ public:
 	int rotate;             //rotating angle in degrees
 	QPoint move_p;   //move_point
 	_PROPERTY _property;
+	double temperature;
 };
 
 /* * @brief       represent lines
@@ -194,7 +202,7 @@ public:
 		* @return      bool : true for selected, false for not selected
 	*/
 	bool is_in_it(const QPoint &start_point_, const QPoint &end_point_) const;
-
+	bool is_in_figure(const QPoint &point);
 	/* * @brief   clear move point
 		* @param [in]  void
 		* @param [out] void
@@ -259,7 +267,7 @@ public:
 		* @return      bool : true for selected, false for not selected
 	*/
 	bool is_in_it(const QPoint &start_point_, const QPoint &end_point_) const;
-
+	bool is_in_figure(const QPoint &point);
 	/* * @brief   clear move point
 		* @param [in]  void
 		* @param [out] void
