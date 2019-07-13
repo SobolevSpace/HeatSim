@@ -1,8 +1,0 @@
-version: 1.0.{build}
-
-environment:
-  matrix:
-  - qt: msvc2019
-
-build_script:
-   - set QTDIR-C:\Qt\Qt5.9.0\5.9\msvc2017_64
