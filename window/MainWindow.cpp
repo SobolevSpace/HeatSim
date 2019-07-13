@@ -660,7 +660,6 @@ void MainWindow::Transport(CType type, double changeval) {
 }
 
 void MainWindow::askAverageTem() {
-	//m_param = std::any_cast<std::pair<pointParameters, pointParameters>>(param);
 	std::any param(std::make_any<std::pair<pointParameters, pointParameters>>());
 	std::pair<pointParameters, pointParameters>& TwoPoint = std::any_cast<std::pair<pointParameters, pointParameters>&>(param);
 	TwoPoint.first.setXY(qt_gui_class->startP().y() / 6, qt_gui_class->startP().x() / 6);
