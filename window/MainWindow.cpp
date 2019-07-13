@@ -9,9 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 {
 	ui->setupUi(this);
-	view = new HeatView;
-	Coorview = new CoordinateView;
-	init();
 }
 
 MainWindow::~MainWindow()
@@ -21,24 +18,24 @@ MainWindow::~MainWindow()
 
 void MainWindow::init()
 {
+	view = new HeatView;
+	Coorview = new CoordinateView;
+	qt_gui_class = new QtGuiClass(this);
 	count = 0;
 	m_timer = new QTimer(this);
-	//定时器触发信号槽
+
 	connect(m_timer, SIGNAL(timeout()), this, SLOT(TimerTimeOut()));
 	connect(view, SIGNAL(SendTime(int)), this, SLOT(RecieveTime(int)));
+	connect(view, SIGNAL(StartPlayHeatdim()), this, SLOT(InitTimer()));
 
-	qt_gui_class = new QtGuiClass(this);
 	CreateActions();
 	CreateButtons();
 	CreateSpinBox();
 	setCentralWidget(qt_gui_class);
 
-	//change
-	//resize(1024, 768);
 	saved = false;
 	connect(this, SIGNAL(select_function(int, int, QString)), qt_gui_class, SLOT(changeState(int, int, QString)));
 	connect(qt_gui_class, SIGNAL(resizeWindow(int, int)), this, SLOT(windowResize(int, int)));
-
 }
 
 /* * @brief   create buttons in the ToolBar
@@ -74,7 +71,7 @@ void MainWindow::CreateButtons()
 	pMenu = menuBar()->addMenu(tr("Help"));
 	pMenu->addAction(Help);
 
-	//create a toobar named Bar
+	//create a toolbar named Bar
 	pToolBar = this->addToolBar(tr("Bar"));
 	//add actions to Bar
 	pToolBar->addAction(Generate);
@@ -779,14 +776,14 @@ void MainWindow::Generate_HeatView()
 {
 	connect(view, SIGNAL(SendTime(int)), this, SLOT(RecieveTime(int)));
 	Updatewb();
+	view->setSliderValue(0);
+	m_timer->stop();
 	view->show();
-	//InitTimer();
 }
 
 void MainWindow::AverageTem_Coordinate()
 {
 	askAverageTem();
-	//Coorview->show();
 }
 
 
@@ -836,10 +833,8 @@ std::shared_ptr<ICommandNotification> MainWindow::get_CommandSink() throw()
 
 void MainWindow::InitTimer()
 {
-
 	count = 0;
 	m_timer->start(50);
-
 }
 
 void MainWindow::TimerTimeOut()
@@ -849,9 +844,8 @@ void MainWindow::TimerTimeOut()
 		return;
 	}
 	count++;
-
+	view->setSliderValue(count);
 	Transport(TIME, count*0.05);
-
 }
 
 void MainWindow::Transport(CType type, double changeval) {

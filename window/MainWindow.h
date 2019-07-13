@@ -92,7 +92,6 @@ public:
 private:
 	QTimer *m_timer;
 	int count;
-	void InitTimer();
 	void Updatewb();
 
 	workboard initial_condition;
@@ -107,6 +106,7 @@ public Q_SLOTS:
 	void Generate_HeatView();
 	void AverageTem_Coordinate();
 	void TimerTimeOut();
+	void InitTimer();
 private Q_SLOTS:
 	void RecieveTime(int val);
 private:

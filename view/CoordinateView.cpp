@@ -47,6 +47,10 @@ void CoordinateView::Paint()
 
 
 	double kx = (double)width / (n - 1);//x轴的系数
+	if(_ma-_mi<=10){
+		_ma = _ma + 10;
+		_mi = _mi - 10;
+	}
 	double ky = (double)height / (_ma - _mi);//y方向的比例系数
 
 	QPen pen, penPoint;
@@ -78,6 +82,7 @@ void CoordinateView::Paint()
 		painter.drawText(O.x() + (i + 0.65)*width / 10,
 			O.y() + 10, QString::number(((i + 1)*((double)n / 10))*0.05));
 	}
+	painter.drawText(O.x()+width-20, O.y()-5, QString("t/sec"));
 
 	//y轴刻度线
 	double _maStep = (double)(_ma - _mi) / 10;
@@ -86,8 +91,10 @@ void CoordinateView::Paint()
 		painter.drawLine(O.x(), O.y() - (i + 1)*height / 10,
 			O.x() - 4, O.y() - (i + 1)*height / 10);
 		painter.drawText(O.x() - 30, O.y() - (i + 0.85)*height / 10,
-			QString::number(double(int((_maStep*(i + 1))*10))/10));
+			QString::number(   double(int(((_maStep*(i + 1))+_mi)*10))/10     ));
 	}
+	painter.drawText(O.x(), O.y()-height, QString("T/Celsius"));
+
 
 }
 

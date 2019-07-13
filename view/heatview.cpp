@@ -20,11 +20,15 @@ HeatView::~HeatView()
 void HeatView::init()
 {
 	connect(ui->SliderSelectTime, SIGNAL(valueChanged(int)),this, SLOT(ChangeTime()));
+	connect(ui->buttonPlay, SIGNAL(clicked()), this, SLOT(StartPlay()));
 }
 
 void HeatView::ChangeTime() {
-	//update();
 	emit SendTime(ui->SliderSelectTime->value());
+}
+
+void HeatView::StartPlay() {
+	emit StartPlayHeatdim();
 }
 
 void HeatView::paintEvent(QPaintEvent*)
@@ -65,5 +69,7 @@ QColor HeatView::Get_Color(double T)
 	return QColor(r, g, b);
 }
 
-
+void HeatView::setSliderValue(int val) {
+	ui->SliderSelectTime->setValue(val);
+}
 
