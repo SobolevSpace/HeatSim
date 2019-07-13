@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>InvironmentSetting</string>
+   <string>EnvironmentSetting</string>
   </property>
   <widget class="QLineEdit" name="InvironmentTemp">
    <property name="geometry">
@@ -49,7 +49,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Invironment temperature(k)：</string>
+    <string>Environment temperature(k)：</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
