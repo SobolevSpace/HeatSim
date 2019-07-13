@@ -36,7 +36,7 @@ public:
 	~workboard();
 };
 
-enum CType {NOCHANGE = 0, ALPHA = 1, TIME=2, INITIALCOND = 3};
+enum CType {NOCHANGE = 0, ALPHA = 1, TIME=2, INITIALCOND = 3, EDGETEMP = 4};
 
 class workboardPass {
 private:
