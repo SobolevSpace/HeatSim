@@ -20,6 +20,7 @@ void MainWindow::init()
 {
 	view = new HeatView;
 	Coorview = new CoordinateView;
+	Settingview = new InvironmentSetting;
 	qt_gui_class = new QtGuiClass(this);
 	count = 0;
 	m_timer = new QTimer(this);
@@ -27,6 +28,8 @@ void MainWindow::init()
 	connect(m_timer, SIGNAL(timeout()), this, SLOT(TimerTimeOut()));
 	connect(view, SIGNAL(SendTime(int)), this, SLOT(RecieveTime(int)));
 	connect(view, SIGNAL(StartPlayHeatdim()), this, SLOT(InitTimer()));
+	connect(Settingview, SIGNAL(sendTemAndAlpha(double, double)), 
+		this, SLOT(ChangeTempAndAlpha(double, double)));
 
 	CreateActions();
 	CreateButtons();
@@ -57,6 +60,9 @@ void MainWindow::CreateButtons()
 	pMenu->addAction(Property_Normal);
 	pMenu->addAction(Property_HeatSource);
 	pMenu->addAction(Property_HeatIsulation);
+
+	pMenu = menuBar()->addMenu(tr("Set"));
+	pMenu->addAction(Invironment);
 
 	pMenu = menuBar()->addMenu(tr("Help"));
 	pMenu->addAction(Help);
@@ -169,7 +175,9 @@ void MainWindow::CreateActions()
 	Property_HeatIsulation->setStatusTip("HEATINSULATION");
 	connect(Property_HeatIsulation, &QAction::triggered, this, &MainWindow::set_property_heatinsulation);
 	
-
+	Invironment = new QAction(tr("Invironment"), this);
+	Invironment->setStatusTip("SETINVIRONMENT");
+	connect(Invironment, &QAction::triggered, this, &MainWindow::inInvironmentSettingview);
 }
 
 /* * @brief   create spinbox
@@ -553,12 +561,18 @@ void MainWindow::RecieveTime(int val) {
 	Transport(TIME, val*0.05);
 }
 
+void MainWindow::ChangeTempAndAlpha(double T, double Alpha) {
+	Transport(EDGETEMP, T);
+	Transport(ALPHA, Alpha);
+	Transport(INITIALCOND, 0.0);
+}
+
 void MainWindow::Generate_HeatView()
 {
 	connect(view, SIGNAL(SendTime(int)), this, SLOT(RecieveTime(int)));
 	Updatewb();
-	view->setSliderValue(0);
 	m_timer->stop();
+	view->setSliderValue(0);
 	view->show();
 }
 
@@ -627,6 +641,10 @@ void MainWindow::TimerTimeOut()
 	count++;
 	view->setSliderValue(count);
 	Transport(TIME, count*0.05);
+}
+
+void MainWindow::inInvironmentSettingview() {
+	Settingview->init();
 }
 
 void MainWindow::Transport(CType type, double changeval) {

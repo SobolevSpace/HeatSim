@@ -18,6 +18,7 @@
 #include "../view/myheader.h"
 #include "../view/QtGuiClass.h"
 #include "../view/CoordinateView.h"
+#include "../view/InvironmentSetting.h"
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -36,6 +37,7 @@ public:
 	QAction *Generate,*Average;
 	QToolBar *pToolBar;
 	QAction *Property_Normal, *Property_HeatIsulation, *Property_HeatSource;
+	QAction *Invironment;
 	QSpinBox *SpinBoxPainterWidth, *SpinBoxPainterColorR, *SpinBoxPainterColorG, *SpinBoxPainterColorB;
 	QDoubleSpinBox *SpinBoxTem;
 	QtGuiClass *qt_gui_class;
@@ -66,6 +68,7 @@ public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
 	void init();
+	void inInvironmentSettingview();
 	void set_CalcCommand(const std::shared_ptr<ICommandBase>& cmd) throw();
 	void set_AverageCommand(const std::shared_ptr<ICommandBase>& cmd)throw();
 	std::shared_ptr<IPropertyNotification> get_PropertySink() throw();
@@ -75,6 +78,7 @@ public:
 
 	HeatView *view;
 	CoordinateView *Coorview;
+	InvironmentSetting *Settingview;
 private:
 	QTimer *m_timer;
 	int count;
@@ -93,8 +97,11 @@ public Q_SLOTS:
 	void AverageTem_Coordinate();
 	void TimerTimeOut();
 	void InitTimer();
+	
 private Q_SLOTS:
 	void RecieveTime(int val);
+private Q_SLOTS:
+	void ChangeTempAndAlpha(double T, double Alpha);
 private:
 	Ui_MainWindowClass *ui;
 
