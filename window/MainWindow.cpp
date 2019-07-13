@@ -9,8 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 {
 	ui->setupUi(this);
-	view = new HeatView;
-	init();
 }
 
 MainWindow::~MainWindow()
@@ -20,24 +18,24 @@ MainWindow::~MainWindow()
 
 void MainWindow::init()
 {
+	view = new HeatView;
+	Coorview = new CoordinateView;
+	qt_gui_class = new QtGuiClass(this);
 	count = 0;
 	m_timer = new QTimer(this);
-	//定时器触发信号槽
+
 	connect(m_timer, SIGNAL(timeout()), this, SLOT(TimerTimeOut()));
 	connect(view, SIGNAL(SendTime(int)), this, SLOT(RecieveTime(int)));
+	connect(view, SIGNAL(StartPlayHeatdim()), this, SLOT(InitTimer()));
 
-	qt_gui_class = new QtGuiClass(this);
 	CreateActions();
 	CreateButtons();
 	CreateSpinBox();
 	setCentralWidget(qt_gui_class);
 
-	//change
-	//resize(1024, 768);
 	saved = false;
 	connect(this, SIGNAL(select_function(int, int, QString)), qt_gui_class, SLOT(changeState(int, int, QString)));
 	connect(qt_gui_class, SIGNAL(resizeWindow(int, int)), this, SLOT(windowResize(int, int)));
-
 }
 
 /* * @brief   create buttons in the ToolBar
@@ -73,10 +71,11 @@ void MainWindow::CreateButtons()
 	pMenu = menuBar()->addMenu(tr("Help"));
 	pMenu->addAction(Help);
 
-	//create a toobar named Bar
+	//create a toolbar named Bar
 	pToolBar = this->addToolBar(tr("Bar"));
 	//add actions to Bar
 	pToolBar->addAction(Generate);
+	pToolBar->addAction(Average);
 	pToolBar->addAction(Random);
 	//pToolBar->addAction(Eraser);
 	pToolBar->addAction(Select);
@@ -213,17 +212,23 @@ void MainWindow::CreateActions()
 	Generate->setStatusTip("Generate Heatdim");
 	connect(Generate, &QAction::triggered, this, &MainWindow::Generate_HeatView);
 
-	//new
+	Average = new QAction(tr("Average"), this);
+	Average->setStatusTip("Average Temperature");
+	connect(Average, &QAction::triggered, this, &MainWindow::AverageTem_Coordinate);
+
 	Property_Normal = new QAction(tr("Normal"), this);
 	Property_Normal->setStatusTip("NORMAL");
 	connect(Property_Normal, &QAction::triggered, this, &MainWindow::set_property_normal);
+	
 	Property_HeatSource = new QAction(tr("HeatSource"), this);
 	Property_HeatSource->setStatusTip("HEATSOURCE");
 	connect(Property_HeatSource, &QAction::triggered, this, &MainWindow::set_property_heatsource);
+	
 	Property_HeatIsulation = new QAction(tr("HeatInsulation"), this);
 	Property_HeatIsulation->setStatusTip("HEATINSULATION");
 	connect(Property_HeatIsulation, &QAction::triggered, this, &MainWindow::set_property_heatinsulation);
 	
+
 }
 
 /* * @brief   create spinbox
@@ -722,6 +727,8 @@ void MainWindow::closeEvent(QCloseEvent* event)
 {
 	//if the user is closing the main window
 	//stop the closing action and prompt the user to save
+	event->accept();
+	return;
 	QMessageBox box(QMessageBox::Question, tr("Save"), tr("Do you want to save the picture?"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
 
 	switch (box.exec()) {
@@ -769,8 +776,14 @@ void MainWindow::Generate_HeatView()
 {
 	connect(view, SIGNAL(SendTime(int)), this, SLOT(RecieveTime(int)));
 	Updatewb();
+	view->setSliderValue(0);
+	m_timer->stop();
 	view->show();
-	//InitTimer();
+}
+
+void MainWindow::AverageTem_Coordinate()
+{
+	askAverageTem();
 }
 
 
@@ -803,6 +816,11 @@ void MainWindow::set_CalcCommand(const std::shared_ptr<ICommandBase>& cmd) throw
 	m_cmdCalc = cmd;
 }
 
+void MainWindow::set_AverageCommand(const std::shared_ptr<ICommandBase>& cmd) throw()
+{
+	m_cmdAverage = cmd;
+}
+
 std::shared_ptr<IPropertyNotification> MainWindow::get_PropertySink() throw()
 {
 	return std::static_pointer_cast<IPropertyNotification>(m_sinkProperty);
@@ -815,10 +833,8 @@ std::shared_ptr<ICommandNotification> MainWindow::get_CommandSink() throw()
 
 void MainWindow::InitTimer()
 {
-
 	count = 0;
 	m_timer->start(50);
-
 }
 
 void MainWindow::TimerTimeOut()
@@ -828,9 +844,8 @@ void MainWindow::TimerTimeOut()
 		return;
 	}
 	count++;
-
+	view->setSliderValue(count);
 	Transport(TIME, count*0.05);
-
 }
 
 void MainWindow::Transport(CType type, double changeval) {
@@ -842,4 +857,15 @@ void MainWindow::Transport(CType type, double changeval) {
 	
 	m_cmdCalc->SetParameter(param);
 	m_cmdCalc->Exec();
+}
+
+void MainWindow::askAverageTem() {
+	//m_param = std::any_cast<std::pair<pointParameters, pointParameters>>(param);
+	std::any param(std::make_any<std::pair<pointParameters, pointParameters>>());
+	std::pair<pointParameters, pointParameters>& TwoPoint = std::any_cast<std::pair<pointParameters, pointParameters>&>(param);
+	TwoPoint.first.setXY(qt_gui_class->startP().x()/6, qt_gui_class->startP().y()/6);
+	TwoPoint.second.setXY(qt_gui_class->endP().x()/6, qt_gui_class->endP().y()/6);
+	
+	m_cmdAverage->SetParameter(param);
+	m_cmdAverage->Exec();
 }

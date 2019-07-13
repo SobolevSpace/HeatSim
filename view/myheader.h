@@ -34,7 +34,8 @@ enum _FUNCTION {
 	SHRINK,            //shrink
 	SAVE,                //save the picture
 	NEW,                //create a new blank picture
-	OPEN                //open an existing picture
+	OPEN,                //open an existing picture
+	SELECTEAVERAGE
 };
 
 enum _PROPERTY{

@@ -39,6 +39,7 @@ private:
 
 	QPoint start_point;
 	QPoint end_point;
+	QPoint s, e;
 	QPoint *temp;
 	QPixmap *pix;
 	QPen *pen;
@@ -71,5 +72,7 @@ public:
 	void set_selected_size(const int width);
 	void set_selected_property(_PROPERTY p);
 	void set_selected_temperature(double T);
+	QPoint startP()const; 
+	QPoint endP()const;
 	const std::vector<Figure*>& getFigureArray(void);
 };

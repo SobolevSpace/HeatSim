@@ -12,5 +12,8 @@ void MainWindowPropertySink::OnPropertyChanged(const std::string& str)
 	if (str == "heat_Result") {
 		m_pW->view->update();
 	}
+	if (str == "avg_Result") {
+		m_pW->Coorview->Update();
+	}
 
 }
