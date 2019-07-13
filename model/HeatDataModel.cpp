@@ -20,7 +20,6 @@ void HeatDataModel::setInitCondi(const workboard condi)
 	*midcondi[0] = condi;
 	calculateMidcondi();
 	Fire_OnPropertyChanged("heat_Result");
-	Fire_OnPropertyChanged("avg_Result");
 }
 
 void HeatDataModel::setInitCondi(const std::shared_ptr<workboard> condi)
@@ -28,7 +27,6 @@ void HeatDataModel::setInitCondi(const std::shared_ptr<workboard> condi)
 	*midcondi[0] = *condi;
 	calculateMidcondi();
 	Fire_OnPropertyChanged("heat_Result");
-	Fire_OnPropertyChanged("avg_Result");
 }
 
 std::shared_ptr<workboard> HeatDataModel::getInitCondi()
@@ -41,7 +39,6 @@ void HeatDataModel::setPadTemperature(const double temp)
 	padTemperature = temp;
 	calculateMidcondi();
 	Fire_OnPropertyChanged("heat_Result");
-	Fire_OnPropertyChanged("avg_Result");
 }
 
 double HeatDataModel::getPadTemperature() const
@@ -54,7 +51,6 @@ void HeatDataModel::setAlpha(const double alp)
 	alpha = alp;
 	calculateMidcondi();
 	Fire_OnPropertyChanged("heat_Result");
-	Fire_OnPropertyChanged("avg_Result");
 }
 
 double HeatDataModel::getAlpha() const
