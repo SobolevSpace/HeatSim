@@ -114,6 +114,9 @@ bool HeatDataModel::Calc(const workboardPass& para)
 	case INITIALCOND:
 		setInitCondi(para.getWorkBoard());
 		return true;
+	case EDGETEMP:
+		setPadTemperature(para.getChangeValue());
+		return true;
 	default:
 		throw(std::runtime_error("NO SUCH PARAMETER CHANGE LOADED"));
 		break;

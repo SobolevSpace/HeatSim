@@ -97,3 +97,76 @@ void pointParameters::setXY(int x, int y) {
 	this->x = x;
 	this->y = y;
 }
+
+alphaParameters::alphaParameters() :val(0) {
+	;
+}
+
+alphaParameters::alphaParameters(const alphaParameters& src) {
+	val = src.val;
+}
+
+alphaParameters::alphaParameters(alphaParameters&& src) {
+	val = src.val;
+}
+
+alphaParameters::alphaParameters(double val) {
+	this->val = val;
+}
+
+alphaParameters::~alphaParameters() {
+	;
+}
+
+alphaParameters& alphaParameters::operator=(const alphaParameters& src) {
+	this->val = src.val;
+	return *this;
+}
+
+alphaParameters& alphaParameters::operator=(alphaParameters&& src) noexcept{
+	val = src.val;
+	return *this;
+}
+
+double alphaParameters::get() const {
+	return val;
+}
+
+void alphaParameters::set(double val) {
+	this->val = val;
+}
+
+
+padTempParameters::padTempParameters() : padTemperature(0) {
+	;
+}
+
+padTempParameters::padTempParameters(const padTempParameters& src) {
+	padTemperature = src.padTemperature;
+}
+
+padTempParameters::padTempParameters(padTempParameters&& src) {
+	padTemperature = src.padTemperature;
+}
+
+padTempParameters::padTempParameters(double val) {
+	this->padTemperature = val;
+}
+
+padTempParameters& padTempParameters::operator= (const padTempParameters& src) {
+	this->padTemperature = src.padTemperature;
+	return *this;
+}
+
+padTempParameters& padTempParameters::operator= (padTempParameters&& src) noexcept{
+	this->padTemperature = src.padTemperature;
+	return *this;
+}
+
+double padTempParameters::get() const {
+	return padTemperature;
+}
+
+void padTempParameters::set(double val) {
+	padTemperature = val;
+}
