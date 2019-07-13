@@ -33,7 +33,6 @@ public:
 	QString filename, filename2;
 	QMenu *pMenu;
 	QAction *Help, *Line, *Rectangle, *Ellipse, *Polygon, *Delete, *Picture, *Select, *Move, *RotateL, *RotateR, *Amplify, *Shrink, *Random, *Text;
-	QAction *New, *Open, *Save, *SaveAs;
 	QAction *Generate,*Average;
 	QToolBar *pToolBar;
 	QAction *Property_Normal, *Property_HeatIsulation, *Property_HeatSource;
@@ -42,7 +41,6 @@ public:
 	QtGuiClass *qt_gui_class;
 	QSlider *pSliderColorR, *pSliderColorG, *pSliderColorB, *pSliderWidth;
 	QAction *LineWidth, *LineColor;
-	QAction *Eraser;
 
 private slots:
 	void visualize_LineWidthChange();
@@ -54,27 +52,15 @@ private slots:
 	void draw_rectangle();
 	void draw_ellipse();
 	void draw_polygon();
-	void draw_picture();
-	void draw_text();
-
-	void RotateL_figure();
-	void RotateR_figure();
 	void Delete_figure();
 	void set_drawshape_to_Default();
 	void set_drawshape_to_Move();
 	void Amplify_figure();
 	void Shrink_figure();
-	void set_eraser();
 	void set_property_normal();
 	void set_property_heatinsulation();
 	void set_property_heatsource();
 	void help();
-
-	void new_file();
-	void open_file();
-	void save_file();
-	void save_as();
-
 
 public:
 	explicit MainWindow(QWidget *parent = 0);

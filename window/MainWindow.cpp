@@ -47,16 +47,6 @@ void MainWindow::CreateButtons()
 {
 	//changed
 	//create a menu
-	pMenu = menuBar()->addMenu(tr("File"));
-	pMenu->addAction(New);
-	pMenu->addAction(Open);
-	pMenu->addAction(Save);
-	pMenu->addAction(SaveAs);
-
-	/*pMenu = menuBar()->addMenu(tr("Tool"));
-	pMenu->addAction(LineWidth);
-	pMenu->addAction(LineColor);
-	*/
 	pMenu = menuBar()->addMenu(tr("Figure"));
 	pMenu->addAction(Line);
 	pMenu->addAction(Rectangle);
@@ -77,15 +67,10 @@ void MainWindow::CreateButtons()
 	pToolBar->addAction(Generate);
 	pToolBar->addAction(Average);
 	pToolBar->addAction(Random);
-	//pToolBar->addAction(Eraser);
 	pToolBar->addAction(Select);
 	pToolBar->addAction(Move);
 	pToolBar->addAction(Amplify);
 	pToolBar->addAction(Shrink);
-	//pToolBar->addAction(RotateL);
-	//pToolBar->addAction(RotateR);
-	//pToolBar->addAction(Picture);
-	//pToolBar->addAction(Text);
 	pToolBar->addAction(Delete);
 	
 }
@@ -97,25 +82,6 @@ void MainWindow::CreateButtons()
 */
 void MainWindow::CreateActions()
 {
-	//create New Action, click to create a new file
-	New = new QAction(tr("New file"), this);
-	New->setShortcut(tr("ctrl+n"));
-	connect(New, &QAction::triggered, this, &MainWindow::new_file);
-
-	//create Open Action, click to open a file
-	Open = new QAction(tr("Open"), this);
-	Open->setShortcut(tr("ctrl+o"));
-	connect(Open, &QAction::triggered, this, &MainWindow::open_file);
-
-	//create Save Action, click to save current file
-	Save = new QAction( tr("Save"), this);
-	Save->setShortcut(tr("ctrl+s"));
-	connect(Save, &QAction::triggered, this, &MainWindow::save_file);
-
-	//create SaveAs Action, click to save current file elsewhere or in other format
-	SaveAs = new QAction( tr("Save as"), this);
-	connect(SaveAs, &QAction::triggered, this, &MainWindow::save_as);
-
 	//create Random Action, click to draw a free line
 	Random = new QAction(tr("Random"), this);
 	Random->setStatusTip(tr("Draw free lines"));
@@ -141,11 +107,6 @@ void MainWindow::CreateActions()
 	Polygon->setStatusTip(tr("Draw a polygon"));
 	connect(Polygon, &QAction::triggered, this, &MainWindow::draw_polygon);
 
-	//create Picture Action, click to draw an external picture
-	Picture = new QAction(tr("Picture"), this);
-	Picture->setStatusTip(tr("Draw a picture"));
-	connect(Picture, &QAction::triggered, this, &MainWindow::draw_picture);
-
 	//create Select Action, click to select several figures
 	Select = new QAction(tr("Select"), this);
 	Select->setStatusTip(tr("Select figures"));
@@ -155,16 +116,6 @@ void MainWindow::CreateActions()
 	Move = new QAction( tr("Move"), this);
 	Move->setStatusTip(tr("Move selected figures"));
 	connect(Move, &QAction::triggered, this, &MainWindow::set_drawshape_to_Move);
-
-	//create RotateL Action, click to rotateL the selected figures
-	RotateL = new QAction( tr("RotateL"), this);
-	RotateL->setStatusTip(tr("Rotate selected figure counterclockwise"));
-	connect(RotateL, &QAction::triggered, this, &MainWindow::RotateL_figure);
-
-	//create RotateR Action, click to rotateR the selected figures
-	RotateR = new QAction(tr("RotateR"), this);
-	RotateR->setStatusTip(tr("Rotate selected figure clockwise"));
-	connect(RotateR, &QAction::triggered, this, &MainWindow::RotateR_figure);
 
 	//create RotateR Action, click to amplify the selected figures
 	Amplify = new QAction( tr("Amplify"), this);
@@ -187,11 +138,6 @@ void MainWindow::CreateActions()
 	Help->setShortcut(tr("f1"));
 	connect(Help, &QAction::triggered, this, &MainWindow::help);
 
-	//create Text Action, click to input texts
-	Text = new QAction( tr("Text"), this);
-	Text->setStatusTip(tr("Input texts"));
-	connect(Text, &QAction::triggered, this, &MainWindow::draw_text);
-
 	//create LineWidth Action, click to change line width
 	LineWidth = new QAction( tr("LineWidth"), this);
 	LineWidth->setStatusTip(tr("Set line width"));
@@ -201,11 +147,6 @@ void MainWindow::CreateActions()
 	LineColor = new QAction( tr("LineColor"), this);
 	LineColor->setStatusTip(tr("Set line color"));
 	connect(LineColor, &QAction::triggered, this, &MainWindow::visualize_ColorChange);
-
-	//create Eraser Action, click to use eraser
-	Eraser = new QAction(tr("Eraser"), this);
-	Eraser->setStatusTip(tr("Set eraser"));
-	connect(Eraser, &QAction::triggered, this, &MainWindow::set_eraser);
 
 	//create Generate Action, click to Generate
 	Generate = new QAction(tr("Generate"), this);
@@ -353,7 +294,6 @@ void MainWindow::CreateSpinBox() {
 	pSliderColorR->setGeometry(SpinBoxPainterColorR->geometry().x()
 		+ SpinBoxPainterColorR->geometry().width(), 0, 90, 40);
 
-	
 	connect(SpinBoxPainterColorR, SIGNAL(valueChanged(int)), pSliderColorR, SLOT(setValue(int)));
 	connect(pSliderColorR, SIGNAL(valueChanged(int)), SpinBoxPainterColorR, SLOT(setValue(int)));
 	pSliderColorR->setVisible(false);
@@ -366,12 +306,10 @@ void MainWindow::CreateSpinBox() {
 	pSliderColorG->setGeometry(SpinBoxPainterColorG->geometry().x()
 		+ SpinBoxPainterColorG->geometry().width(), 0, 90, 40);
 
-	// 
 	connect(SpinBoxPainterColorG, SIGNAL(valueChanged(int)), pSliderColorG, SLOT(setValue(int)));
 	connect(pSliderColorG, SIGNAL(valueChanged(int)), SpinBoxPainterColorG, SLOT(setValue(int)));
 	pSliderColorG->setVisible(false);
-	//
-		//new
+
 	pSliderColorB = new QSlider(this);
 	pSliderColorB->setOrientation(Qt::Horizontal);  
 	pSliderColorB->setMinimum(0);  
@@ -384,8 +322,7 @@ void MainWindow::CreateSpinBox() {
 	connect(SpinBoxPainterColorB, SIGNAL(valueChanged(int)), pSliderColorB, SLOT(setValue(int)));
 	connect(pSliderColorB, SIGNAL(valueChanged(int)), SpinBoxPainterColorB, SLOT(setValue(int)));
 	pSliderColorB->setVisible(false);
-	//
-		//new
+
 	pSliderWidth = new QSlider(this);
 	pSliderWidth->setOrientation(Qt::Horizontal); 
 	pSliderWidth->setMinimum(1);  
@@ -398,7 +335,7 @@ void MainWindow::CreateSpinBox() {
 	connect(SpinBoxPainterWidth, SIGNAL(valueChanged(int)), pSliderWidth, SLOT(setValue(int)));
 	connect(pSliderWidth, SIGNAL(valueChanged(int)), SpinBoxPainterWidth, SLOT(setValue(int)));
 	pSliderWidth->setVisible(false);
-	//
+
 }
 
 /* * @brief    prepare to draw line
@@ -451,38 +388,6 @@ void MainWindow::draw_polygon()
 	emit select_function(WAIT, POLYGON);
 }
 
-/* * @brief    prepare to draw external picture
-	* @param [in]  void
-	* @param [out] void
-	* @return      void
-*/
-void MainWindow::draw_picture() {
-	//pop out a window and request a path
-	QString filename;
-	filename = QFileDialog::getOpenFileName(this, tr("Open"), "", tr("Images (*.png *.jpg *.bmp)"));
-	if (!filename.isEmpty()) {
-		emit select_function(DRAWING, PIXMAP, filename);
-	}
-}
-
-/* * @brief    rotateL the selected figure
-	* @param [in]  void
-	* @param [out] void
-	* @return      void
-*/
-void MainWindow::RotateL_figure() {
-	emit select_function(ROTATE_LEFT);
-}
-
-/* * @brief    rotateR the selected figure
-	* @param [in]  void
-	* @param [out] void
-	* @return      void
-*/
-void MainWindow::RotateR_figure() {
-	emit select_function(ROTATE_RIGHT);
-}
-
 /* * @brief    delete the selected figure
 	* @param [in]  void
 	* @param [out] void
@@ -528,25 +433,6 @@ void MainWindow::Shrink_figure() {
 	emit select_function(SHRINK);
 }
 
-/* * @brief    draw text on the picture
-	* @param [in]  void
-	* @param [out] void
-	* @return      void
-*/
-void MainWindow::draw_text()
-{
-	emit select_function(WAIT, TEXT);
-}
-
-/* * @brief    erase figures
-	* @param [in]  void
-	* @param [out] void
-	* @return      void
-*/
-void MainWindow::set_eraser() {
-	emit select_function(WAIT, ERASE);
-}
-
 void MainWindow::set_property_normal() {
 	qt_gui_class->setProperty(NORMAL);
 	qt_gui_class->set_selected_property(NORMAL);
@@ -571,115 +457,10 @@ void MainWindow::set_property_heatsource(){
 void MainWindow::help()
 {
 	QString helptext1("1. Press left button to draw free lines.\n2. Single click to draw a figure and click again to finish.\n3. Click right button to abort drawing a figure.\n4. Press Ctrl key to draw squares or circles when drawing a rectangle or ellipse.\n");
-	QString helptext2("5. Click on the edge of a figure to select.\n6. Rotate 15 degrees each time.\n7. Press Delete key or select Delete to remove a figure.\n");
-	QString helptext3("8. Text cannot be modified after exiting edit mode\n9. Color and width change applied after unselected\n");
+	QString helptext2("5. Click on the edge of a figure to select.\n6. Click Property to choose the property of a figure.\n7. Press Delete key or select Delete to remove a figure.\n");
+	QString helptext3("8. Click Generate to get Heatdim.\n9. Click Average to get average temperature.\n");
 	QMessageBox box(QMessageBox::Information, "Help", helptext1 + helptext2 + helptext3, QMessageBox::Ok);
 	box.exec();
-}
-
-/* * @brief    create a new file
-	* @param [in]  void
-	* @param [out] void
-	* @return      void
-*/
-void MainWindow::new_file()
-{
-	//prompt the user to save the picture
-	QMessageBox box(QMessageBox::Question, tr("Save"), tr("Do you want to save the picture?"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-
-	switch (box.exec()) {
-	case QMessageBox::Yes:
-		if (saved) {
-			//save the picture and clear the canvas
-			emit select_function(SAVE, PIXMAP, filename);
-			emit select_function(NEW);
-		}
-		else {
-			this->filename = QFileDialog::getSaveFileName(this, tr("Save"), "untitled.png", tr("*.png;; *.bmp;; *.jpg"));
-			if (!filename.isEmpty()) {
-				emit select_function(SAVE, PIXMAP, filename);
-				emit select_function(NEW);
-			}
-		}
-		break;
-	case QMessageBox::No:
-		emit select_function(NEW);
-		break;
-	default:
-		break;
-	}
-}
-
-/* * @brief    open a file
-	* @param [in]  void
-	* @param [out] void
-	* @return      void
-*/
-void MainWindow::open_file()
-{
-	this->filename2 = QFileDialog::getOpenFileName(this, tr("Open"), "", tr("Images (*.png *.jpg *.bmp)"));
-	if (!filename2.isEmpty()) {
-		//prompt the user to save the picture
-		QMessageBox box(QMessageBox::Question, tr("Save"), tr("Do you want to save the picture?"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-
-		switch (box.exec()) {
-		case QMessageBox::Yes:
-			if (saved) {
-				emit select_function(SAVE, PIXMAP, filename);
-				this->filename = this->filename2;
-				emit select_function(OPEN, PIXMAP, filename2);
-			}
-			else {
-				this->filename = QFileDialog::getSaveFileName(this, tr("Save"), "untitled.png", tr("*.png;; *.bmp;; *.jpg"));
-				if (!filename.isEmpty()) {
-					emit select_function(SAVE, PIXMAP, filename);
-					this->filename = this->filename2;
-					emit select_function(OPEN, PIXMAP, filename2);
-				}
-			}
-			break;
-		case QMessageBox::No:
-			this->filename = this->filename2;
-			emit select_function(OPEN, PIXMAP, filename2);
-			break;
-		default:
-			break;
-		}
-	}
-}
-
-/* * @brief    save current file
-	* @param [in]  void
-	* @param [out] void
-	* @return      void
-*/
-void MainWindow::save_file()
-{
-	if (saved) {
-		//if the user has selected the save path
-		emit select_function(SAVE, PIXMAP, filename);
-	}
-	else {
-		//if the user hasn't selected the path, prompt the user to choose a path
-		this->filename = QFileDialog::getSaveFileName(this, tr("Save"), "untitled.png", tr("*.png;; *.bmp;; *.jpg"));
-		if (!filename.isEmpty()) {
-			emit select_function(SAVE, PIXMAP, filename);
-			saved = true;
-		}
-	}
-}
-
-/* * @brief    save as another file
-	* @param [in]  void
-	* @param [out] void
-	* @return      void
-*/
-void MainWindow::save_as()
-{
-	QString filename3 = QFileDialog::getSaveFileName(this, tr("Save"), "untitled.png", tr("*.png;; *.bmp;; *.jpg"));
-	if (!filename3.isEmpty()) {
-		emit select_function(SAVE, PIXMAP, filename3);
-	}
 }
 
 /* * @brief    visualize linewidth change
