@@ -175,8 +175,8 @@ void MainWindow::CreateActions()
 	Property_HeatIsulation->setStatusTip("HEATINSULATION");
 	connect(Property_HeatIsulation, &QAction::triggered, this, &MainWindow::set_property_heatinsulation);
 	
-	Invironment = new QAction(tr("Invironment"), this);
-	Invironment->setStatusTip("SETINVIRONMENT");
+	Invironment = new QAction(tr("Environment"), this);
+	Invironment->setStatusTip("SETENVIRONMENT");
 	connect(Invironment, &QAction::triggered, this, &MainWindow::inInvironmentSettingview);
 }
 
