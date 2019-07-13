@@ -562,6 +562,7 @@ void MainWindow::RecieveTime(int val) {
 }
 
 void MainWindow::ChangeTempAndAlpha(double T, double Alpha) {
+	Updatewb();
 	Transport(EDGETEMP, T);
 	Transport(ALPHA, Alpha);
 	Transport(INITIALCOND, 0.0);
@@ -571,6 +572,7 @@ void MainWindow::Generate_HeatView()
 {
 	connect(view, SIGNAL(SendTime(int)), this, SLOT(RecieveTime(int)));
 	Updatewb();
+	Transport(INITIALCOND, 0.0);
 	m_timer->stop();
 	view->setSliderValue(0);
 	view->show();
@@ -601,7 +603,6 @@ void MainWindow::Updatewb()
 			}
 		}
 		initial_condition = A;
-		Transport(INITIALCOND, 0.0);
 	}
 
 }
@@ -662,8 +663,8 @@ void MainWindow::askAverageTem() {
 	//m_param = std::any_cast<std::pair<pointParameters, pointParameters>>(param);
 	std::any param(std::make_any<std::pair<pointParameters, pointParameters>>());
 	std::pair<pointParameters, pointParameters>& TwoPoint = std::any_cast<std::pair<pointParameters, pointParameters>&>(param);
-	TwoPoint.first.setXY(qt_gui_class->startP().x()/6, qt_gui_class->startP().y()/6);
-	TwoPoint.second.setXY(qt_gui_class->endP().x()/6, qt_gui_class->endP().y()/6);
+	TwoPoint.first.setXY(qt_gui_class->startP().y() / 6, qt_gui_class->startP().x() / 6);
+	TwoPoint.second.setXY(qt_gui_class->endP().y() / 6, qt_gui_class->endP().x() / 6);
 	
 	m_cmdAverage->SetParameter(param);
 	m_cmdAverage->Exec();
