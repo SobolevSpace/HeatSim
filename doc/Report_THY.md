@@ -22,3 +22,20 @@
 &emsp;&emsp;在用户点击Generate按钮之后，MainWindow接受点击信号，Updatewb()函数根据已经存储的figure类的数组信息来初始化温度分布图（initial_condition），并通过Transport函数来调用m_cmdCalc->Exec()。在viewmodel层发射"heat_Result"之后，由MainWindow层中的m_sinkProperty来更新view中的温度分布图。而Transport的参数则由前面几条相应的参数决定（CType type, double changeval）。
 &emsp;&emsp;在选中qt_gui_class的某一区域之后，单击Average按钮，MainWindow会调用askAverageTem来触发命令（m_cmdAverage->Exec()）。在m_sinkProperty接收到"avg_Result"之后，便会调用Coorview->Update()来更新均温随时间变化的二维坐标图。
 
+
+![MainWindow](https://github.com/SobolevSpace/HeatSim/blob/master/doc/Images/structure(1)thy.jpg)
+![View](https://github.com/SobolevSpace/HeatSim/blob/master/doc/Images/structure(2)thy.jpg )
+
+-------
+### 运行效果图
+
+![Effect1](https://github.com/SobolevSpace/HeatSim/blob/master/doc/Images/effect(1)thy.png)
+
+![Effect2](https://github.com/SobolevSpace/HeatSim/blob/master/doc/Images/effect(2)thy.png)
+
+-----
+### 心得体会与建议
+- 这门课让我体会到了在团队开发的时候，MVVM模式具有很大的意义。以前的团队合作中，通常每个人的工作都有很大的耦合，导致你拖着我，我拖着你，让进程变得很缓慢。但是MVVM模式实现了不同层的解耦，让每个人的工作分割开来，提高了团队的整体效率
+- 同时，在这门课中学会了如何使用github这个很重要的网站，也意识到了git在工程的管理以及团队的协作之中的重要性
+
+建议：可能在讲课的时候，更加明确一下需要学习什么工具会更好一点。如果只是推荐的语气话，可能就没有学习这些工具的动力了。
