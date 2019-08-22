@@ -3,22 +3,22 @@
 
 ## 分工任务的解决方案
 在本次项目的合作过程中，我主要承担common层和app层。由于我是组长，并且app层代码量较少，我还负责了项目了自动化部署构建，以及环境配置及测试。  
-common层可以分成两个部分。一个是MVVM模型所需要的参数类型的定义和实现，另一部分则实现的是workboard（工作台）的各种方法。具体的实现细节将在下两章讲述。  
-自动化部署是通过GitHub上应用商店的AppVeyor实现的，自动测试也基于此。  
+common层可以分成两个部分。一个是MVVM模型所需要的参数类型的定义和实现，另一部分则实现的是workboard（工作台）的各种方法。具体的实现细节将在下两章讲述。
+自动化部署是通过GitHub上应用商店的AppVeyor实现的，自动测试也基于此。
 
 ## 设计思路
-参数部分的设计比较简单，实现想好可能会用到的各种需要传递的参数，然后每一个参数都写一个类就好了。具体实现的参数有timeParameter, pointParameter, alphaParameter, 和padTimeParameter. 每个类都实现了基本的方法，包括构造函数、析构函数、赋值重载以及set和get方法，这四个类的结构都大同小异。timeParameter类的作用是供其他两个部分传递时间信息的，而其他三个参数也起到类似的效果，只不过传递的信息不同。  
-workboard部分实现了3个类，分别是point, workboard, workboardPass 以及 1个枚举 CType。
-CType枚举类型表示材料。
-point表示一个物理意义上的点，有温度，材料两种属性。该类提供了一些普通的set、get方法，以及常用的运算符重载。
-workboard表示一个平板，由一个point类的阵列组成。提供了一些普通的set、get方法，并且实现了其与二维double矩阵的互相类型转换。
+参数部分的设计比较简单，事先想好可能会用到的各种需要传递的参数，然后每一个参数都写一个类就好了。具体实现的参数有timeParameter, pointParameter, alphaParameter, 和padTimeParameter. 每个类都实现了基本的方法，包括构造函数、析构函数、赋值重载以及set和get方法，这四个类的结构都大同小异。timeParameter类的作用是供其他两个部分传递时间信息的，而其他三个参数也起到类似的效果，只不过传递的信息不同。  
+workboard部分实现了3个类，分别是point, workboard, workboardPass 以及 1个枚举 CType。  
+CType枚举类型表示材料。  
+point表示一个物理意义上的点，有温度，材料两种属性。该类提供了一些普通的set、get方法，以及常用的运算符重载。  
+workboard表示一个平板，由一个point类的阵列组成。提供了一些普通的set、get方法，并且实现了其与二维double矩阵的互相类型转换。  
 workboardPass是由多个workboard构成的vector，表达的含义是workboard每一帧的状态。实现该类的目的是为了能够在model层只计算一次，就可以在前端快速的查询数据。  
-app层实现view层和viewmodel层的绑定，绑定的数据包括共用一个heatViewModel。以及向viewmodel发送Property（包括点的材料，温度等）改变的通知，并绑定操作的调用。
+app层实现view层和viewmodel层的绑定，绑定的数据包括共用一个heatViewModel。以及向viewmodel发送Property（包括点的材料，温度等）改变的通知，并绑定操作的调用。  
 
 ## 图表说明
-timeParameters:  
-成员 | 属性 | 功能
-- | - | -
+timeParameters:
+成员|属性|功能
+-|-| -
 int flameNo | private | 该参数表示当前是第几帧
 timeParameters() | public | 构造函数
 timeParameters(const timeParameters& ) | public | 构造函数
@@ -31,10 +31,10 @@ void set(int) | public | 修改参数值
 
 由于其他Parameter的结构是类似的，在此不做过多介绍，pointParameter, alphaParameter和padTimeparameter class都提供了功能一致的方法。
 
-point:  
-该数据结构表示物理意义上的一块区域（一个点），具有材料和温度两种属性。  
-成员 | 属性 | 功能
-- | - | -
+point:
+该数据结构表示物理意义上的一块区域（一个点），具有材料和温度两种属性。
+成员| 属性 | 功能
+-|-|-
 double temperature| private | 表征该点的温度
 CType propertyID | private | 表征该点的材料（决定其热传导的性质）
 point()|public|构造函数
@@ -46,10 +46,10 @@ CType getProperty()|public|获得材料
 void setTemperature(double t)|public|设置温度
 void setProperty(CType t)|public|设置材料
 
-workboard:  
-该数据结构表示物理意义上的一块平板，在计算机中由一个point class的二维矩阵实现。  
-成员 | 属性 | 功能  
-- | - | -
+workboard:
+该数据结构表示物理意义上的一块平板，在计算机中由一个point class的二维矩阵实现。
+成员 | 属性 | 功能
+-|-|-
 int size|private|表示平板的大小
 vector<vector<point>>|private|point class的二维矩阵
 workboard()|public|构造函数
@@ -61,7 +61,7 @@ void getPointMat(vector<vector<point>>&) |public|返回point class的二维矩�
 workboardPass:
 该数据结构储存了workboard随时间变化的具体信息,供viewModel和View间传递用。
 成员 | 属性 | 功能
-- | - | -
+-|-|-
 workboard wb|private|工作台
 CType changeType|private|改变的属性
 double changeValue|private|改变的值
