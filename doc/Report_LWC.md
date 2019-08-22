@@ -16,7 +16,7 @@ workboardPass是由多个workboard构成的vector，表达的含义是workboard�
 app层实现view层和viewmodel层的绑定，绑定的数据包括共用一个heatViewModel。以及向viewmodel发送Property（包括点的材料，温度等）改变的通知，并绑定操作的调用。  
 
 ## 图表说明
-timeParameters:
+timeParameters:  
 成员|属性|功能  
 -|-| -  
 int flameNo | private | 该参数表示当前是第几帧  
@@ -60,8 +60,8 @@ void getPointMat(vector<vector<point>>&) |public|返回point class的二维矩�
 
 workboardPass:
 该数据结构储存了workboard随时间变化的具体信息,供viewModel和View间传递用。
-成员 | 属性 | 功能
--|-|-
+| 成员 | 属性 | 功能 |
+|-|-|-|
 workboard wb|private|工作台
 CType changeType|private|改变的属性
 double changeValue|private|改变的值
