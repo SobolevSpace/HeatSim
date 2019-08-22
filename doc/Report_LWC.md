@@ -74,6 +74,21 @@ void setChangeType(CType c)|public|设置changeType
 void setChangeValue(double v) |public|设置changeValue
 void setWorkboard(workboard& w)|public|设置workboard
 
+|         回归算法         |         聚类算法         |        正则化方法        |
+| :----------------------: | :----------------------: | :----------------------: |
+| ![](./img/ch2/2.1/1.jpg) | ![](./img/ch2/2.1/2.jpg) | ![](./img/ch2/2.1/3.jpg) |
+
+|        决策树学习        |        贝叶斯方法        |       基于核的算法       |
+| :----------------------: | :----------------------: | :----------------------: |
+| ![](./img/ch2/2.2.4.png) | ![](./img/ch2/2.1/5.jpg) | ![](./img/ch2/2.1/6.jpg) |
+
+|         聚类算法         |       关联规则学习       |       人工神经网络        |
+| :----------------------: | :----------------------: | :-----------------------: |
+| ![](./img/ch2/2.1/7.jpg) | ![](./img/ch2/2.2.8.png) | ![](./img/ch2/2.2.09.png) |
+
+|         深度学习          |       降低维度算法        |         集成算法          |
+| :-----------------------: | :-----------------------: | :-----------------------: |
+| ![](./img/ch2/2.2.10.png) | ![](./img/ch2/2.2.11.png) | ![](./img/ch2/2.2.12.png) |
 ## 运行效果图
 自动部署流程：
 ![picture display wrong](https://github.com/SobolevSpace/HeatSim/blob/master/doc/Images/effect4-lwc.jpg?raw=true)
