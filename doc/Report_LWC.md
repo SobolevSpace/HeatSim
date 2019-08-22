@@ -17,17 +17,25 @@ app层实现view层和viewmodel层的绑定，绑定的数据包括共用一个h
 
 ## 图表说明
 timeParameters:  
-成员|属性|功能  
--|-| -  
-int flameNo | private | 该参数表示当前是第几帧  
-timeParameters() | public | 构造函数  
-timeParameters(const timeParameters& ) | public | 构造函数  
-timeParameters(timeParameters&& ) | public | 构造函数  
-~timeParameters() | public | 析构函数  
-timeParameters& operator=(const timeParameters&) | public | 赋值重载  
-timeParameters& operator=(timeParameters&&) | public | 赋值重载  
-int get() | public | 暴露参数值  
-void set(int) | public | 修改参数值  
+|成员|属性|功能|  
+| :----------------------: | :----------------------: | :----------------------: |
+|int flameNo | private | 该参数表示当前是第几帧|
+| :----------------------: | :----------------------: | :----------------------: |
+|timeParameters() | public | 构造函数|
+| :----------------------: | :----------------------: | :----------------------: |
+|timeParameters(const timeParameters& ) | public | 构造函数|
+| :----------------------: | :----------------------: | :----------------------: |
+|timeParameters(timeParameters&& ) | public | 构造函数|
+| :----------------------: | :----------------------: | :----------------------: |
+|~timeParameters() | public | 析构函数 |
+| :----------------------: | :----------------------: | :----------------------: |
+|timeParameters& operator=(const timeParameters&) | public | 赋值重载 |
+| :----------------------: | :----------------------: | :----------------------: |
+|timeParameters& operator=(timeParameters&&) | public | 赋值重载 |
+| :----------------------: | :----------------------: | :----------------------: |
+|int get() | public | 暴露参数值 |
+| :----------------------: | :----------------------: | :----------------------: |
+|void set(int) | public | 修改参数值 |
 
 由于其他Parameter的结构是类似的，在此不做过多介绍，pointParameter, alphaParameter和padTimeparameter class都提供了功能一致的方法。
 
