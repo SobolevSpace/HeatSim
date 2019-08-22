@@ -17,23 +17,23 @@ app层实现view层和viewmodel层的绑定，绑定的数据包括共用一个h
 
 ## 图表说明
 timeParameters:
-成员|属性|功能
--|-| -
-int flameNo | private | 该参数表示当前是第几帧
-timeParameters() | public | 构造函数
-timeParameters(const timeParameters& ) | public | 构造函数
-timeParameters(timeParameters&& ) | public | 构造函数
-~timeParameters() | public | 析构函数
-timeParameters& operator=(const timeParameters&) | public | 赋值重载
-timeParameters& operator=(timeParameters&&) | public | 赋值重载
-int get() | public | 暴露参数值
-void set(int) | public | 修改参数值
+成员|属性|功能  
+-|-| -  
+int flameNo | private | 该参数表示当前是第几帧  
+timeParameters() | public | 构造函数  
+timeParameters(const timeParameters& ) | public | 构造函数  
+timeParameters(timeParameters&& ) | public | 构造函数  
+~timeParameters() | public | 析构函数  
+timeParameters& operator=(const timeParameters&) | public | 赋值重载  
+timeParameters& operator=(timeParameters&&) | public | 赋值重载  
+int get() | public | 暴露参数值  
+void set(int) | public | 修改参数值  
 
 由于其他Parameter的结构是类似的，在此不做过多介绍，pointParameter, alphaParameter和padTimeparameter class都提供了功能一致的方法。
 
 point:
 该数据结构表示物理意义上的一块区域（一个点），具有材料和温度两种属性。
-成员| 属性 | 功能
+成员| 属性 | 功能  
 -|-|-
 double temperature| private | 表征该点的温度
 CType propertyID | private | 表征该点的材料（决定其热传导的性质）
@@ -84,11 +84,11 @@ void setWorkboard(workboard& w)|public|设置workboard
 ![picture display wrong](https://github.com/SobolevSpace/HeatSim/blob/master/doc/Images/effect3-lwc.jpg?raw=true)
 
 ## 心得体会
-在本次小学期项目的开发中，我学习了软件开发中的几种框架。以前写程序考虑的问题是，用什么样的算法和数据结构，如何优化性能等等，对团队开发方面却没怎么想过。而该小学期给我最大的收获就是了解了框架这一开发模式。在此前的开发过程中，由于没有了解过框架相关的知识，团队开发经常是随意分工，没有效率（甚至不是MVC框架，耦合度非常高）。
-在本次具体实践中，我们采用了MVVM框架进行开发，亲身感受了解耦合的必要性以及方法。虽然该课名为C++，但是在其中学到的MVVM框架模型，却可以在各种语言的团队合作开发中使用。这是超出C++的收获。
-除此之外，我还更加深入的学习了C++，以前我所学习的C++就是C加上一个面向对象。但是在开发过程中，接触到了智能指针、右值引用等更多有意思的特性，让我觉得我的C++学习之路才刚刚入门。
+在本次小学期项目的开发中，我学习了软件开发中的几种框架。以前写程序考虑的问题是，用什么样的算法和数据结构，如何优化性能等等，对团队开发方面却没怎么想过。而该小学期给我最大的收获就是了解了框架这一开发模式。在此前的开发过程中，由于没有了解过框架相关的知识，团队开发经常是随意分工，没有效率（甚至不是MVC框架，耦合度非常高）。  
+在本次具体实践中，我们采用了MVVM框架进行开发，亲身感受了解耦合的必要性以及方法。虽然该课名为C++，但是在其中学到的MVVM框架模型，却可以在各种语言的团队合作开发中使用。这是超出C++的收获。  
+除此之外，我还更加深入的学习了C++，以前我所学习的C++就是C加上一个面向对象。但是在开发过程中，接触到了智能指针、右值引用等更多有意思的特性，让我觉得我的C++学习之路才刚刚入门。  
 在工具的使用上，我学习了GitHub应用商店中的appVeyor以进行自动化部署。虽然感觉这类工具的学习成本比较高（需要进行很多环境配置，如果要自动化测试的话还要写学习新的代码），但是把东西都配置好之后就能理解到自动化部署带来的好处————一有bug，及时发现。这省去了很多整合以及调试的时间。
 
 ## 改进意见
-希望老师能够在讲课时将MVVM框架的例子程序讲得详细一些，因为这个对于后面合作开发还是很重要的，而且计院此前也没有讲过关于开发框架的课。当时听课的时候没有跟上，课后还是花了不少时间讨论、查阅资料与模仿才终于搞懂了那个bus的例程是怎么运行的。
-关于工具的使用，如自动部署工具和版本控制工具，老师可以限定一个范围让同学们自由选择，这样的话班里使用同样工具的人就会多一些，遇到问题也好互相帮助。（因为有些环境配置的问题往往要花费不少时间，还容易无从下手）否则的话大家选择面太多，一方面不知道怎么选择，另一方面别人能给的帮助也比较有限。
+希望老师能够在讲课时将MVVM框架的例子程序讲得详细一些，因为这个对于后面合作开发还是很重要的，而且计院此前也没有讲过关于开发框架的课。当时听课的时候没有跟上，课后还是花了不少时间讨论、查阅资料与模仿才终于搞懂了那个bus的例程是怎么运行的。  
+关于工具的使用，如自动部署工具和版本控制工具，老师可以限定一个范围让同学们自由选择，这样的话班里使用同样工具的人就会多一些，遇到问题也好互相帮助。（因为有些环境配置的问题往往要花费不少时间，还容易无从下手）否则的话大家选择面太多，一方面不知道怎么选择，另一方面别人能给的帮助也比较有限。  
