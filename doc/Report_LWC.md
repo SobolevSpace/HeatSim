@@ -17,86 +17,67 @@ app层实现view层和viewmodel层的绑定，绑定的数据包括共用一个h
 
 ## 图表说明
 timeParameters:  
+
 | 成员 | 属性 | 功能 |
 | :----------------------: | :----------------------: | :----------------------: |
 | int flameNo | private | 该参数表示当前是第几帧 |
-| :----------------------: | :----------------------: | :----------------------: |
 | timeParameters() | public | 构造函数 |
-| :----------------------: | :----------------------: | :----------------------: |
 | timeParameters(const timeParameters& ) | public | 构造函数 |
-| :----------------------: | :----------------------: | :----------------------: |
 | timeParameters(timeParameters&& ) | public | 构造函数 |
-| :----------------------: | :----------------------: | :----------------------: |
 | ~timeParameters() | public | 析构函数 |
-| :----------------------: | :----------------------: | :----------------------: |
 | timeParameters& operator=(const timeParameters&) | public | 赋值重载 |
-| :----------------------: | :----------------------: | :----------------------: |
 | timeParameters& operator=(timeParameters&&) | public | 赋值重载 |
-| :----------------------: | :----------------------: | :----------------------: |
 | int get() | public | 暴露参数值 |
-| :----------------------: | :----------------------: | :----------------------: |
 | void set(int) | public | 修改参数值 |
 
 由于其他Parameter的结构是类似的，在此不做过多介绍，pointParameter, alphaParameter和padTimeparameter class都提供了功能一致的方法。
 
-point:
-该数据结构表示物理意义上的一块区域（一个点），具有材料和温度两种属性。
-成员| 属性 | 功能  
--|-|-
-double temperature| private | 表征该点的温度
-CType propertyID | private | 表征该点的材料（决定其热传导的性质）
-point()|public|构造函数
-point(double temp)|public|构造函数，材料为默认值
-point(double temp,CType c)|public|构造函数
-~point()|public|析构函数
-double getTemperature()|public|获得温度
-CType getProperty()|public|获得材料
-void setTemperature(double t)|public|设置温度
-void setProperty(CType t)|public|设置材料
+point:  
+该数据结构表示物理意义上的一块区域（一个点），具有材料和温度两种属性。  
 
-workboard:
-该数据结构表示物理意义上的一块平板，在计算机中由一个point class的二维矩阵实现。
-成员 | 属性 | 功能
--|-|-
-int size|private|表示平板的大小
-vector<vector<point>>|private|point class的二维矩阵
-workboard()|public|构造函数
-~workboard()|public|析构函数
-int getSize()|public|返回size
-workboard& operator=(const workboard& ) |public|赋值重载
-void getPointMat(vector<vector<point>>&) |public|返回point class的二维矩阵
-
-workboardPass:
-该数据结构储存了workboard随时间变化的具体信息,供viewModel和View间传递用。
 | 成员 | 属性 | 功能 |
-|-|-|-|
-workboard wb|private|工作台
-CType changeType|private|改变的属性
-double changeValue|private|改变的值
-workboardPass()|public|构造函数
-~workboardPass()|public|析构函数
-CType getChangeType()|public|返回changeType的值
-double getChangeValue()|public|返回changeValue的值
-workboard getWorkboard()|public|返回workboard
-void setChangeType(CType c)|public|设置changeType
-void setChangeValue(double v) |public|设置changeValue
-void setWorkboard(workboard& w)|public|设置workboard
-
-|         回归算法         |         聚类算法         |        正则化方法        |
 | :----------------------: | :----------------------: | :----------------------: |
-| ![](./img/ch2/2.1/1.jpg) | ![](./img/ch2/2.1/2.jpg) | ![](./img/ch2/2.1/3.jpg) |
+| double temperature | private | 表征该点的温度 |
+| CType propertyID | private | 表征该点的材料（决定其热传导的性质） |
+| point() | public | 构造函数 |
+| point(double temp) | public | 构造函数，材料为默认值 |
+| point(double temp,CType c) | public | 构造函数 |
+| ~point() | public | 析构函数 |
+| double getTemperature() | public | 获得温度 |
+| CType getProperty()| public | 获得材料 |
+| void setTemperature(double t) | public | 设置温度 |
+| void setProperty(CType t) | public | 设置材料 |
 
-|        决策树学习        |        贝叶斯方法        |       基于核的算法       |
+workboard:  
+该数据结构表示物理意义上的一块平板，在计算机中由一个point class的二维矩阵实现。
+
+| 成员 | 属性 | 功能 |
 | :----------------------: | :----------------------: | :----------------------: |
-| ![](./img/ch2/2.2.4.png) | ![](./img/ch2/2.1/5.jpg) | ![](./img/ch2/2.1/6.jpg) |
+| int size | private | 表示平板的大小 |
+| vector<vector<point>> | private | point class的二维矩阵 |
+| workboard() | public | 构造函数 |
+| ~workboard() | public | 析构函数 |
+| int getSize() | public | 返回size |
+| workboard& operator=(const workboard& ) | public | 赋值重载 |
+| void getPointMat(vector<vector<point>>&) | public | 返回point class的二维矩阵 |
 
-|         聚类算法         |       关联规则学习       |       人工神经网络        |
-| :----------------------: | :----------------------: | :-----------------------: |
-| ![](./img/ch2/2.1/7.jpg) | ![](./img/ch2/2.2.8.png) | ![](./img/ch2/2.2.09.png) |
+workboardPass:  
+该数据结构储存了workboard随时间变化的具体信息,供viewModel和View间传递用。  
 
-|         深度学习          |       降低维度算法        |         集成算法          |
-| :-----------------------: | :-----------------------: | :-----------------------: |
-| ![](./img/ch2/2.2.10.png) | ![](./img/ch2/2.2.11.png) | ![](./img/ch2/2.2.12.png) |
+| 成员 | 属性 | 功能 |
+| :----------------------: | :----------------------: | :----------------------: |
+| workboard wb | private | 工作台 |
+| CType changeType | private | 改变的属性 |
+| double changeValue | private | 改变的值 |
+| workboardPass() | public | 构造函数 |
+| ~workboardPass() | public | 析构函数 |
+| CType getChangeType() | public | 返回changeType的值 |
+| double getChangeValue() | public | 返回changeValue的值 |
+| workboard getWorkboard() | public | 返回workboard |
+| void setChangeType(CType c) | public | 设置changeType |
+| void setChangeValue(double v) | public | 设置changeValue |
+| void setWorkboard(workboard& w) | public | 设置workboard |
+
 ## 运行效果图
 自动部署流程：
 ![picture display wrong](https://github.com/SobolevSpace/HeatSim/blob/master/doc/Images/effect4-lwc.jpg?raw=true)
